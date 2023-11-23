@@ -1,0 +1,35 @@
+/* ./resources/css/app.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    /* font-family: 'Poppins'; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+.sidebar-item.open > .sidebar-title  .toggle-btn{
+    transform: rotate(90deg);
+  }
+  
+  
+  .sidebar-item.open{
+    padding: 10px;
+  }
+  
+  .sidebar-item.open > .sidebar-content{
+    height: auto;
+    text-align: left;
+  }
+  
+  .sidebar-item.open > .sidebar-content p{
+    margin-left: 60px;
+  }
