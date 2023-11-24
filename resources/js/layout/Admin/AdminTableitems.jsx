@@ -1,5 +1,5 @@
 import React from 'react'
-import items from '../data/tables.json'
+import items from '../../DummyData/Admin/AdminData'
 
 
     const TableApproval = () => {

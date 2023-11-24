@@ -11,10 +11,10 @@ const TablesPackges = () => {
 
           <thead>
             <tr className="">
-              <th scope="col" className='text-sm'>Package</th>
-              <th scope="col" className='text-sm' >Invested</th>
-              <th scope="col" className='text-sm'>ROI</th>
-              <th scope="col" className='text-sm text-right'>Status</th>
+              <th scope="col" className='text-sm  text-left'>Package</th>
+              <th scope="col" className='text-sm  text-left' >Invested</th>
+              <th scope="col" className='text-sm  text-left'>ROI</th>
+              <th scope="col" className='text-sm  text-left'>Status</th>
             </tr>
           </thead>
 
@@ -60,19 +60,19 @@ const TablesTranxlogs = () => {
 
 
     return (
-        <div className=" overflow-auto">
+        <div className=" overflow-auto w-full">
 
         <table className="table-auto w-full text-sm">
 
 
           <thead>
             <tr className="">
-              <th scope="col" className='flex text-sm self-start'>Email</th>
-              <th scope="col" className='text-sm' >Amount</th>
-              <th scope="col" className='text-sm'>Mode</th>
-              <th scope="col" className='text-sm'>Status</th>
-              <th scope="col" className='text-sm'>Trancaction ID</th>
-              <th scope="col" className='text-sm text-right'>Date</th>
+              <th scope="col" className='text-sm text-left'>Email</th>
+              <th scope="col" className='text-sm text-left' >Amount</th>
+              <th scope="col" className='text-sm text-left'>Mode</th>
+              <th scope="col" className='text-sm text-left'>Status</th>
+              <th scope="col" className='text-sm text-left'>Trancaction ID</th>
+              <th scope="col" className='text-sm text-left'>Date</th>
             </tr>
           </thead>
 
