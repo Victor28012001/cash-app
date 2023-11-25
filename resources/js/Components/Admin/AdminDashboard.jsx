@@ -7,7 +7,7 @@ import { BiSolidBox } from "react-icons/bi";
 const AdminDashboard = () => {
   return (
     <AdminLayout>
-      <div className=''>
+      <div className='bg-[#f0f0f0] py-[15px] h-full'>
         <div className="flex flex-wrap items-center ml-[50%] translate-x-[-50%] w-[100%]">
           <CardContainer>
             <IconContainer color='blue'>
