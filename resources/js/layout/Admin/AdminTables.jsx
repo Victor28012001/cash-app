@@ -73,7 +73,7 @@ const TablesMessages = () => {
 
         <thead>
           <tr className="">
-            <th scope="col" className='text-left flex text-sm'>Email</th>
+            <th scope="col" className='text-left text-sm'>Email</th>
             <th scope="col" className='text-left text-sm' >message</th>
             <th scope="col" className='text-left text-sm'>title</th>
             <th scope="col" className='text-left text-sm'>Image</th>

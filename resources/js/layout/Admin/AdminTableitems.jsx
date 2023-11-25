@@ -27,13 +27,13 @@ import items from '../../DummyData/Admin/AdminData'
         return (
             Agents.map((item) => (
             <><tr className=" border-b-[1px]">
-                <td className=""><img src={item.username} alt="" /></td>
+                <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px] p-[10px]">{item.username}</td>
                 <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px] p-[10px]">{item.package}</td>
                 <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px] p-[10px]">{item.invested}</td>
                 <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px] p-[10px]">{item.increase}</td>
                 <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px] p-[10px]">{item.ROI}</td>
                 <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px] p-[10px]">{item.status}</td>
-                <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px] p-[10px]">{item.invest-ID}</td>
+                <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px] p-[10px]">{item.investID}</td>
             </tr>
 
                 {/* <hr className=" -ml-2 h-[8px] w-[80%] bg-black-500 self-center" /> */}
