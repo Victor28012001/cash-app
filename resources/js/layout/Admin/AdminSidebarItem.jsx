@@ -46,7 +46,7 @@ export default function AdminSidebarItem({ item, key },{defaultActive}) {
         )
     } else {
         return (
-            <Link to={item.path || "#"} className={`sidebar-item plain  flex flex-row p-[10px] justify-between w-full  hover:bg-[#DAEBFF] rounded ${active}`}>
+            <Link to={item.path || "#"} className={`sidebar-item plain  flex flex-row p-[10px] justify-between items-center w-full  hover:bg-[#DAEBFF] rounded ${active}`}>
                 {item.icon}
                 <p className="font-semibold self-center text-[#818485] font-[600] text-[20px] leading-[30px]">{item.name}</p>
                 <p></p>

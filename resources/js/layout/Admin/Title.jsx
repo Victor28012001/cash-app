@@ -1,6 +1,5 @@
 import React from 'react'
 import { useLocation } from "react-router-dom";
-// import TradingviewTickerWidget from '../../Components/Widget/TradingviewTickerWidget'
 import { TickerTape } from "react-ts-tradingview-widgets";
 
 const Title = (datas) => {

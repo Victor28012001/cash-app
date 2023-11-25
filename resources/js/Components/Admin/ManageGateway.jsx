@@ -4,7 +4,9 @@ import AdminLayout from '../../layout/Admin/AdminLayout'
 const ManageGateway = () => {
   return (
     <AdminLayout>
-      AddGateway
+      <div className='bg-[#f0f0f0] py-[15px] h-full'>
+        <h1>ManageGateway</h1>
+      </div>
     </AdminLayout>
   )
 }
