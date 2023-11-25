@@ -37,6 +37,7 @@
         "react-router-guards": "^1.0.2",
         "react-social-icons": "^6.4.0",
         "react-transition-group": "^4.4.5",
+        "react-ts-tradingview-widgets": "^1.2.0",
         "router-dom": "^2.2.11",
         "save-dev": "^0.0.1-security"
     }

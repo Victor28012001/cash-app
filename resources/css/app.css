@@ -33,3 +33,11 @@ body {
   .sidebar-item.open > .sidebar-content p{
     margin-left: 60px;
   }
+
+  .tradingview-widget-copyright{
+    display: none;
+  }
+
+  .label__link-dzbd7lyV{
+    display: none;
+  }

@@ -1,10 +1,12 @@
 import React from 'react'
 import { useLocation } from "react-router-dom";
-import TradingviewTickerWidget from '../../Components/Widget/TradingviewTickerWidget'
+// import TradingviewTickerWidget from '../../Components/Widget/TradingviewTickerWidget'
+import { TickerTape } from "react-ts-tradingview-widgets";
 
 const Title = (datas) => {
 
   const titleData = datas.datas
+  
 
   //assigning location variable
   const location = useLocation();
@@ -38,7 +40,30 @@ const Title = (datas) => {
           </div>
         </div>
         <div className='ticker-widget'>
-          <TradingviewTickerWidget />
+        <TickerTape colorTheme="dark" symbols={[{
+                  "proName": "FOREXCOM:SPXUSD",
+                  "title": "S&P 500"
+                },
+                {
+                  "proName": "FOREXCOM:NSXUSD",
+                  "title": "US 100"
+                },
+                {
+                  "proName": "FX_IDC:EURUSD",
+                  "title": "EUR to USD"
+                },
+                {
+                  "proName": "BITSTAMP:BTCUSD",
+                  "title": "Bitcoin"
+                },
+                {
+                  "proName": "BITSTAMP:ETHUSD",
+                  "title": "Ethereum"
+                },
+                {
+                  "description": "TESLA",
+                  "proName": "NASDAQ:TSLA"
+                }]}></TickerTape>
         </div>
       </div>
     </div>
