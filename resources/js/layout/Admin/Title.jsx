@@ -38,7 +38,7 @@ const Title = (datas) => {
             <button type="button" className="bg-[#000] text-[#fff] h-[75%] p-[4px] rounded-tr-[4px] rounded-br-[4px]">copy</button>
           </div>
         </div>
-        <div className='ticker-widget'>
+        <div className='ticker-widget h-[80%]'>
         <TickerTape colorTheme="dark" symbols={[{
                   "proName": "FOREXCOM:SPXUSD",
                   "title": "S&P 500"

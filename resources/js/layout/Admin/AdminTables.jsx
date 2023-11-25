@@ -11,13 +11,13 @@ const TablesApproval = () => {
 
         <thead>
           <tr className="">
-            <th scope="col" className=''>Email</th>
-            <th scope="col" className='text-sm' >Email Status</th>
-            <th scope="col" className='text-sm'>Avatar</th>
-            <th scope="col" className='text-sm'>Agent</th>
-            <th scope="col" className='text-sm'>User Status</th>
-            <th scope="col" className='text-sm text-right'>Time</th>
-            <th scope="col" className='text-sm text-right'>Date</th>
+            <th scope="col" className='text-left '>Email</th>
+            <th scope="col" className='text-left text-sm' >Email Status</th>
+            <th scope="col" className='text-left text-sm'>Avatar</th>
+            <th scope="col" className='text-left text-sm'>Agent</th>
+            <th scope="col" className='text-left text-sm'>User Status</th>
+            <th scope="col" className='text-left text-sm'>Time</th>
+            <th scope="col" className='text-left text-sm'>Date</th>
           </tr>
         </thead>
 
@@ -42,13 +42,13 @@ const TablesInvestments = () => {
 
         <thead>
           <tr className="">
-            <th scope="col" className='flex text-sm self-start'>Username</th>
-            <th scope="col" className='text-sm'>Package</th>
-            <th scope="col" className='text-sm'>Invested</th>
-            <th scope="col" className='text-sm'>Increase</th>
-            <th scope="col" className='text-sm'>ROI</th>
-            <th scope="col" className='text-sm'>Status</th>
-            <th scope="col" className='text-sm text-right'>Investment ID</th>
+            <th scope="col" className='text-left flex text-sm'>Username</th>
+            <th scope="col" className='text-left text-sm'>Package</th>
+            <th scope="col" className='text-left text-sm'>Invested</th>
+            <th scope="col" className='text-left text-sm'>Increase</th>
+            <th scope="col" className='text-left text-sm'>ROI</th>
+            <th scope="col" className='text-left text-sm'>Status</th>
+            <th scope="col" className='text-left text-sm'>Investment ID</th>
           </tr>
         </thead>
 
@@ -62,23 +62,23 @@ const TablesInvestments = () => {
   )
 }
 
-const TableMessages = () => {
+const TablesMessages = () => {
 
 
   return (
-    <div className=" overflow-auto">
+    <div className=" overflow-auto w-full">
 
       <table className="table-auto w-full text-sm">
 
 
         <thead>
           <tr className="">
-            <th scope="col" className='flex text-sm self-start'>Email</th>
-            <th scope="col" className='text-sm' >message</th>
-            <th scope="col" className='text-sm'>title</th>
-            <th scope="col" className='text-sm'>Image</th>
-            <th scope="col" className='text-sm'>Status</th>
-            <th scope="col" className='text-sm text-right'>Date</th>
+            <th scope="col" className='text-left flex text-sm'>Email</th>
+            <th scope="col" className='text-left text-sm' >message</th>
+            <th scope="col" className='text-left text-sm'>title</th>
+            <th scope="col" className='text-left text-sm'>Image</th>
+            <th scope="col" className='text-left text-sm'>Status</th>
+            <th scope="col" className='text-left text-sm'>Date</th>
           </tr>
         </thead>
 
@@ -97,20 +97,20 @@ const TablesPackage = () => {
 
 
   return (
-    <div className=" overflow-auto">
+    <div className=" overflow-auto w-full">
 
       <table className="table-auto w-full text-sm">
 
 
         <thead>
           <tr className="">
-            <th scope="col" className='text-sm text-left'>Name</th>
-            <th scope="col" className='text-sm' >Daily Increase</th>
-            <th scope="col" className='text-sm'>bonus</th>
-            <th scope="col" className='text-sm'>status</th>
-            <th scope="col" className='text-sm'>MIN</th>
-            <th scope="col" className='text-sm'>MAX</th>
-            <th scope="col" className='text-sm text-right'>Time & Date</th>
+            <th scope="col" className='text-left text-sm text-left'>Name</th>
+            <th scope="col" className='text-left text-sm' >Daily Increase</th>
+            <th scope="col" className='text-left text-sm'>bonus</th>
+            <th scope="col" className='text-left text-sm'>status</th>
+            <th scope="col" className='text-left text-sm'>MIN</th>
+            <th scope="col" className='text-left text-sm'>MAX</th>
+            <th scope="col" className='text-left text-sm'>Time & Date</th>
           </tr>
         </thead>
 
@@ -127,17 +127,17 @@ const TablesPackage = () => {
 const TablesGateway = () => {
 
   return (
-    <div className=" overflow-auto">
+    <div className=" overflow-auto w-full">
 
       <table className="table-auto w-full text-sm">
 
 
         <thead>
           <tr className="text-sm">
-            <th scope="col" className=' self-start'>Payment Method</th>
-            <th scope="col" className='text-sm' >details</th>
-            <th scope="col" className='text-sm'>Email</th>
-            <th scope="col" className='text-sm'>Icon</th>
+            <th scope="col" className='text-left '>Payment Method</th>
+            <th scope="col" className='text-left text-sm' >details</th>
+            <th scope="col" className='text-left text-sm'>Email</th>
+            <th scope="col" className='text-left text-sm'>Icon</th>
           </tr>
         </thead>
 
@@ -156,20 +156,20 @@ const TablesAllUsers = () => {
 
 
   return (
-    <div className=" overflow-auto">
+    <div className=" overflow-auto w-full">
 
       <table className="table-auto w-full text-sm">
 
 
         <thead>
           <tr className="text-sm">
-            <th scope="col" className=' self-start'>Username</th>
-            <th scope="col" className='text-sm' >refferal Code</th>
-            <th scope="col" className='text-sm'>plan Profit</th>
-            <th scope="col" className=' self-start'>online</th>
-            <th scope="col" className='text-sm' >verified</th>
-            <th scope="col" className='text-sm'>account Balance</th>
-            <th scope="col" className='text-sm'>Reg. Date</th>
+            <th scope="col" className='text-left '>Username</th>
+            <th scope="col" className='text-left text-sm' >refferal Code</th>
+            <th scope="col" className='text-left text-sm'>plan Profit</th>
+            <th scope="col" className='text-left '>online</th>
+            <th scope="col" className='text-left text-sm' >verified</th>
+            <th scope="col" className='text-left text-sm'>account Balance</th>
+            <th scope="col" className='text-left text-sm'>Reg. Date</th>
           </tr>
         </thead>
 
@@ -188,20 +188,20 @@ const TablesdepositOrder = () => {
 
 
   return (
-    <div className=" overflow-auto">
+    <div className=" overflow-auto w-full">
 
       <table className="table-auto w-full text-sm">
 
 
         <thead>
           <tr className="text-sm">
-            <th scope="col" className=' self-start'>Email</th>
-            <th scope="col" className='text-sm'>Amount</th>
-            <th scope="col" className='text-sm'>Mode</th>
-            <th scope="col" className='text-sm'>Status</th>
-            <th scope="col" className='text-sm' >refferer ID</th>
-            <th scope="col" className='text-sm'>referrer Pay</th>
-            <th scope="col" className='text-sm'>Reg. Date</th>
+            <th scope="col" className='text-left '>Email</th>
+            <th scope="col" className='text-left text-sm'>Amount</th>
+            <th scope="col" className='text-left text-sm'>Mode</th>
+            <th scope="col" className='text-left text-sm'>Status</th>
+            <th scope="col" className='text-left text-sm' >refferer ID</th>
+            <th scope="col" className='text-left text-sm'>referrer Pay</th>
+            <th scope="col" className='text-left text-sm'>Reg. Date</th>
           </tr>
         </thead>
 
@@ -220,20 +220,20 @@ const TableswithdrawalRequest = () => {
 
 
   return (
-    <div className=" overflow-auto">
+    <div className=" overflow-auto w-full">
 
       <table className="table-auto w-full text-sm">
 
 
         <thead>
           <tr className="text-sm">
-          <th scope="col" className=' self-start'>Email</th>
-          <th scope="col" className='text-sm'>Wallet Address</th>
-            <th scope="col" className='text-sm'>Amount</th>
-            <th scope="col" className='text-sm'>Mode</th>
-            <th scope="col" className='text-sm'>Status</th>
-            <th scope="col" className='text-sm' >refferer ID</th>
-            <th scope="col" className='text-sm'>Reg. Date</th>
+          <th scope="col" className='text-left '>Email</th>
+          <th scope="col" className='text-left text-sm'>Wallet Address</th>
+            <th scope="col" className='text-left text-sm'>Amount</th>
+            <th scope="col" className='text-left text-sm'>Mode</th>
+            <th scope="col" className='text-left text-sm'>Status</th>
+            <th scope="col" className='text-left text-sm' >refferer ID</th>
+            <th scope="col" className='text-left text-sm'>Reg. Date</th>
           </tr>
         </thead>
 
@@ -252,18 +252,18 @@ const TablesUsers = () => {
 
 
   return (
-    <div className=" overflow-auto">
+    <div className=" overflow-auto w-full">
 
       <table className="table-auto w-full text-sm">
 
 
         <thead>
           <tr className="text-sm">
-            <th scope="col" className=' self-start'>Username</th>
-            <th scope="col" className='text-sm'>Email</th>
-            <th scope="col" className='text-sm' >refferal Code</th>
-            <th scope="col" className='text-sm'>account Balance</th>
-            <th scope="col" className='text-sm'>Reg. Date</th>
+            <th scope="col" className='text-left '>Username</th>
+            <th scope="col" className='text-left text-sm'>Email</th>
+            <th scope="col" className='text-left text-sm' >refferal Code</th>
+            <th scope="col" className='text-left text-sm'>account Balance</th>
+            <th scope="col" className='text-left text-sm'>Reg. Date</th>
           </tr>
         </thead>
 
@@ -278,4 +278,4 @@ const TablesUsers = () => {
 
 }
 
-export { TablesApproval, TablesInvestments, TableMessages, TablesPackage, TablesGateway, TablesUsers, TablesAllUsers, TablesdepositOrder, TableswithdrawalRequest }
+export { TablesApproval, TablesInvestments, TablesMessages, TablesPackage, TablesGateway, TablesUsers, TablesAllUsers, TablesdepositOrder, TableswithdrawalRequest }
