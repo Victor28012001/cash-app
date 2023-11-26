@@ -1,12 +1,10 @@
 import React from 'react'
-// import items from '../data/tables.json'
-import items from '../../DummyData/User/UserData.json'
-import { useState } from 'react'
 
 
-const TablePackages = () => {
-    const [rows, setRows] = useState([])
-    let conversations = items[2].packages
+const TablePackages = ({slice}) => {
+
+    let conversations = slice
+
     return (
         conversations.map((item) => (<><tr className=" border-b-[1px]">
             <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px]">{item.package}</td>
@@ -22,9 +20,9 @@ const TablePackages = () => {
     // return console.log(conversations)
 }
 
-const TableMessages = () => {
+const TableMessages = ({slice}) => {
 
-    let Agents = items[1].TableMessages
+    let Agents = slice
 
     return (
         Agents.map((item) => (
@@ -42,9 +40,9 @@ const TableMessages = () => {
         )
     )
 }
-const TableTranxlogs = () => {
+const TableTranxlogs = ({slice}) => {
 
-    let Contacts = items[0].transactions
+    let Contacts = slice
 
     return (
         Contacts.map((item) => (<><tr className=" border-b-[1px]">

@@ -7,7 +7,6 @@ import MyPackages from '../Components/User/MyPackages';
 import Package from '../Components/User/Package';
 import Security from '../Components/User/Security';
 import TransactionLogs from '../Components/User/TransactionLogs';
-import UpdateAccount from '../Components/User/UpdateAccount';
 import WalletDetails from '../Components/User/WalletDetails';
 import Withdrawal from '../Components/User/Withdrawal';
 import Profile from '../Components/User/Profile';

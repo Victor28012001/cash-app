@@ -1,5 +1,4 @@
 import React from 'react'
-import items from '../../DummyData/Admin/AdminData'
 
 
 const TableApproval = ({slice}) => {
