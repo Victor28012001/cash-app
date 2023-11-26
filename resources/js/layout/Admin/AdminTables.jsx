@@ -14,9 +14,7 @@ const TablesApproval = () => {
             <th scope="col" className='text-left '>Email</th>
             <th scope="col" className='text-left text-sm' >Email Status</th>
             <th scope="col" className='text-left text-sm'>Avatar</th>
-            <th scope="col" className='text-left text-sm'>Agent</th>
             <th scope="col" className='text-left text-sm'>User Status</th>
-            <th scope="col" className='text-left text-sm'>Time</th>
             <th scope="col" className='text-left text-sm'>Date</th>
           </tr>
         </thead>
@@ -249,7 +247,6 @@ const TableswithdrawalRequest = () => {
 }
 
 const TablesUsers = () => {
-
 
   return (
     <div className=" overflow-auto w-full">

@@ -36,7 +36,10 @@ const AddUser = () => {
             <label htmlFor="Address" className='text-[#8f8f8f]'>Address</label>
             <input placeholder="Address" type="Address" name="Address" id="Address" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
 
-
+            <div className="flex"><input type="checkbox" name="terms" id="terms" />
+            <span>I accept the <a href="">Terms Of Service</a></span>
+            </div>
+            
             <input type="submit" value="Update Settings" className='w-[20%] border-0 px-2 py-2 text-blueGray-600 relative bg-[#00abff] rounded text-sm shadow outline-none focus:outline-none' />
           </form>
         </div>
