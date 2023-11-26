@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { MdExpandCircleDown } from "react-icons/md";
 
 
-export default function AdminSidebarItem({ item, key },{defaultActive}) {
+export default function AdminSidebarItem({ item }) {
     //assigning location variable
     const location = useLocation();
   
@@ -15,7 +15,6 @@ export default function AdminSidebarItem({ item, key },{defaultActive}) {
     // const splitLocation = pathname.split("/");
     const active = pathname == item.path ? `bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800` : `hover:bg-indigo-50 text-gray-600`
     const [open, setOpen] = useState(false)
-    const [activeIndex, setActiveIndex] = useState(defaultActive || 1);
     let iconStyles = { color: "rgba(25,0,250,0.6)", fontSize: "1.5em" };
 
     if (item.childrens) {
