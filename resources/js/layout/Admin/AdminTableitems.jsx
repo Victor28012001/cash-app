@@ -1,46 +1,13 @@
 import React from 'react'
 import items from '../../DummyData/Admin/AdminData'
-import { useState, useEffect } from 'react';
 
 
-const TableApproval = () => {
-    let conversations = items[0].approval
-
-
-    const [rows, setRows] = useState([])
-    const [rowPerPage] = useState(10)
-    const [currentPage, setCurrentPage] = useState(1)
-    const [totalRows, setTotalRows] = useState(0)
-
-    setTotalRows(conversations.length)
-    console.log(conversations);
-
-    setRows(conversations)
-    const lastIndexPage = rowPerPage + currentPage
-    const firstIndexPage = lastIndexPage - rowPerPage
-    console.log(firstIndexPage);
-    const currentRows = conversations.slice(firstIndexPage, lastIndexPage)
-    console.log(currentRows);
-
-    const paginate = (pageNum) => setCurrentPage(pageNum)
-
-    const prevPage = ()=> setCurrentPage(currentPage - 1)
-    const nextPage = ()=> setCurrentPage(currentPage + 1)
-
-    // const showPagination = () => {
-    //     return <Row
-    //     rowPerPage={rowPerPage}
-    //     totalRows={totalRows}
-    //     currentPage={currentPage}
-    //     paginate={paginate}
-    //     nextPage={nextPage}
-    //     prevPage={prevPage}
-    //     />
-    // }
+const TableApproval = ({slice}) => {
+    let conversations = slice
 
 
     return (
-        rows.map((item) => (<><tr className=" border-b-[1px]">
+        conversations.map((item) => (<><tr className=" border-b-[1px]">
             <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px]">{item.email}</td>
             <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px]">{item.emailStatus}</td>
             <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px]"><img src={item.avatar} alt="" /></td>
@@ -54,9 +21,9 @@ const TableApproval = () => {
     )
 }
 
-const TableInvestments = () => {
+const TableInvestments = ({slice}) => {
 
-    let Agents = items[1].investments
+    let Agents = slice
 
     return (
         Agents.map((item) => (
@@ -76,9 +43,9 @@ const TableInvestments = () => {
     )
 }
 
-const TableMessages = () => {
+const TableMessages = ({slice}) => {
 
-    let Contacts = items[2].messages
+    let Contacts = slice
 
     return (
         Contacts.map((item) => (<><tr className=" border-b-[1px]">
@@ -95,9 +62,9 @@ const TableMessages = () => {
         )
     )
 }
-const TablePackages = () => {
+const TablePackages = ({slice}) => {
 
-    let ContactList = items[3].package
+    let ContactList = slice
 
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">
@@ -116,9 +83,9 @@ const TablePackages = () => {
     )
 }
 
-const TableAllUsers = () => {
+const TableAllUsers = ({slice}) => {
 
-    let ContactList = items[4].allUsers
+    let ContactList = slice
 
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">
@@ -138,9 +105,9 @@ const TableAllUsers = () => {
 }
 
 
-const TableGateway = () => {
+const TableGateway = ({slice}) => {
 
-    let ContactList = items[5].paymentGateway
+    let ContactList = slice
 
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">
@@ -158,10 +125,9 @@ const TableGateway = () => {
 
 
 
-const TableUsers = () => {
+const TableUsers = ({slice}) => {
 
-    let ContactList = items[6].users
-
+    let ContactList = slice
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">
             <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px] p-[10px]">{item.username}</td>
@@ -179,9 +145,9 @@ const TableUsers = () => {
 
 
 
-const TabledepositOrder = () => {
+const TabledepositOrder = ({slice}) => {
 
-    let ContactList = items[7].depositOrder
+    let ContactList = slice
 
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">
@@ -202,9 +168,9 @@ const TabledepositOrder = () => {
 
 
 
-const TablewithdrawalRequest = () => {
+const TablewithdrawalRequest = ({slice}) => {
 
-    let ContactList = items[8].withdrawalRequest
+    let ContactList = slice
 
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">

@@ -1,7 +1,13 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
+import useTable from '../../hooks/useTable';
+import AdminTablesFooter from './AdminTablesFooter';
 import { TablePackages, TableApproval, TableInvestments, TableMessages, TableUsers, TableGateway, TableAllUsers, TabledepositOrder, TablewithdrawalRequest } from "./AdminTableitems";
 
-const TablesApproval = () => {
+const TablesApproval = ({ datas, rowsPerPage }) => {
+  let data = datas[0].approval
+  const [page, setPage] = useState(1);
+  const { slice, range } = useTable(data, page, rowsPerPage);
 
   return (
     <div className=" overflow-auto w-full">
@@ -20,16 +26,20 @@ const TablesApproval = () => {
         </thead>
 
         <tbody>
-          <TableApproval />
+          <TableApproval slice={slice}/>
         </tbody>
 
       </table>
+      <AdminTablesFooter range={range} slice={slice} setPage={setPage} page={page} />
 
     </div>
   )
 }
 
-const TablesInvestments = () => {
+const TablesInvestments = ({ datas, rowsPerPage }) => {
+  let data = datas[1].investments
+  const [page, setPage] = useState(1);
+  const { slice, range } = useTable(data, page, rowsPerPage);
 
 
   return (
@@ -51,16 +61,21 @@ const TablesInvestments = () => {
         </thead>
 
         <tbody>
-          <TableInvestments />
+          <TableInvestments slice={slice} />
         </tbody>
 
       </table>
+
+      <AdminTablesFooter range={range} slice={slice} setPage={setPage} page={page} />
 
     </div>
   )
 }
 
-const TablesMessages = () => {
+const TablesMessages = ({ datas, rowsPerPage }) => {
+  let data = datas[2].messages
+  const [page, setPage] = useState(1);
+  const { slice, range } = useTable(data, page, rowsPerPage);
 
 
   return (
@@ -81,17 +96,22 @@ const TablesMessages = () => {
         </thead>
 
         <tbody>
-          <TableMessages />
+          <TableMessages slice={slice} />
         </tbody>
 
       </table>
+
+      <AdminTablesFooter range={range} slice={slice} setPage={setPage} page={page} />
 
     </div>
   )
 }
 
 
-const TablesPackage = () => {
+const TablesPackage = ({ datas, rowsPerPage }) => {
+  let data = datas[3].package
+  const [page, setPage] = useState(1);
+  const { slice, range } = useTable(data, page, rowsPerPage);
 
 
   return (
@@ -113,16 +133,21 @@ const TablesPackage = () => {
         </thead>
 
         <tbody>
-          <TablePackages />
+          <TablePackages slice={slice} />
         </tbody>
 
       </table>
+
+      <AdminTablesFooter range={range} slice={slice} setPage={setPage} page={page} />
 
     </div>
   )
 }
 
-const TablesGateway = () => {
+const TablesGateway = ({ datas, rowsPerPage }) => {
+  let data = datas[5].paymentGateway
+  const [page, setPage] = useState(1);
+  const { slice, range } = useTable(data, page, rowsPerPage);
 
   return (
     <div className=" overflow-auto w-full">
@@ -140,17 +165,22 @@ const TablesGateway = () => {
         </thead>
 
         <tbody>
-          <TableGateway />
+          <TableGateway slice={slice} />
         </tbody>
 
       </table>
+
+      <AdminTablesFooter range={range} slice={slice} setPage={setPage} page={page} />
 
     </div>
   )
 
 }
 
-const TablesAllUsers = () => {
+const TablesAllUsers = ({ datas, rowsPerPage }) => {
+  let data = datas[4].allUsers
+  const [page, setPage] = useState(1);
+  const { slice, range } = useTable(data, page, rowsPerPage);
 
 
   return (
@@ -172,17 +202,22 @@ const TablesAllUsers = () => {
         </thead>
 
         <tbody>
-          <TableAllUsers />
+          <TableAllUsers slice={slice} />
         </tbody>
 
       </table>
+
+      <AdminTablesFooter range={range} slice={slice} setPage={setPage} page={page} />
 
     </div>
   )
 
 }
 
-const TablesdepositOrder = () => {
+const TablesdepositOrder = ({ datas, rowsPerPage }) => {
+  let data = datas[7].depositOrder
+  const [page, setPage] = useState(1);
+  const { slice, range } = useTable(data, page, rowsPerPage);
 
 
   return (
@@ -204,17 +239,22 @@ const TablesdepositOrder = () => {
         </thead>
 
         <tbody>
-          <TabledepositOrder />
+          <TabledepositOrder slice={slice} />
         </tbody>
 
       </table>
+
+      <AdminTablesFooter range={range} slice={slice} setPage={setPage} page={page} />
 
     </div>
   )
 
 }
 
-const TableswithdrawalRequest = () => {
+const TableswithdrawalRequest = ({ datas, rowsPerPage }) => {
+  let data = datas[8].withdrawalRequest
+  const [page, setPage] = useState(1);
+  const { slice, range } = useTable(data, page, rowsPerPage);
 
 
   return (
@@ -236,17 +276,22 @@ const TableswithdrawalRequest = () => {
         </thead>
 
         <tbody>
-          <TablewithdrawalRequest />
+          <TablewithdrawalRequest slice={slice} />
         </tbody>
 
       </table>
+
+      <AdminTablesFooter range={range} slice={slice} setPage={setPage} page={page} />
 
     </div>
   )
 
 }
 
-const TablesUsers = () => {
+const TablesUsers = ({ datas, rowsPerPage }) => {
+  let data = datas[6].users
+  const [page, setPage] = useState(1);
+  const { slice, range } = useTable(data, page, rowsPerPage);
 
   return (
     <div className=" overflow-auto w-full">
@@ -265,10 +310,12 @@ const TablesUsers = () => {
         </thead>
 
         <tbody>
-          <TableUsers />
+          <TableUsers slice={slice} />
         </tbody>
 
       </table>
+
+      <AdminTablesFooter range={range} slice={slice} setPage={setPage} page={page} />
 
     </div>
   )
