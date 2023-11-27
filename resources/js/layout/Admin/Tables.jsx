@@ -18,7 +18,7 @@ const TablesPackges = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Packges</h1>
+        <h1 className='text-lg font-black'>Packges</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded  outline-none w-[40%] pl-10' />
       </div>
 
@@ -60,7 +60,7 @@ const TablesMessages = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Messages</h1>
+        <h1 className='text-lg font-black'>Messages</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded  outline-none w-[40%] pl-10' />
       </div>
 
@@ -104,7 +104,7 @@ const TablesTranxlogs = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Transaction Logs</h1>
+        <h1 className='text-lg font-black'>Transaction Logs</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded  outline-none w-[40%] pl-10' />
       </div>
 

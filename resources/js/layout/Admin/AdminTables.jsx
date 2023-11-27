@@ -18,7 +18,7 @@ const TablesApproval = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Approval</h1>
+        <h1 className='text-lg font-black'>Approval</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded  outline-none w-[40%] pl-10' />
       </div>
 
@@ -62,7 +62,7 @@ const TablesInvestments = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Investments</h1>
+        <h1 className='text-lg font-black'>Investments</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm outline-none w-[40%] pl-10' />
       </div>
 
@@ -108,7 +108,7 @@ const TablesMessages = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Messages</h1>
+        <h1 className='text-lg font-black'>Messages</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm outline-none w-[40%] pl-4' />
       </div>
 
@@ -153,7 +153,7 @@ const TablesPackage = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Packages</h1>
+        <h1 className='text-lg font-black'>Packages</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm outline-none w-[40%] pl-4' />
       </div>
 
@@ -197,7 +197,7 @@ const TablesGateway = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Gateways</h1>
+        <h1 className='text-lg font-black'>Gateways</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm outline-none w-[40%] pl-4' />
       </div>
 
@@ -240,7 +240,7 @@ const TablesAllUsers = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>All Users</h1>
+        <h1 className='text-lg font-black'>All Users</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm outline-none w-[40%] pl-4' />
       </div>
 
@@ -286,7 +286,7 @@ const TablesdepositOrder = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Deposit Order</h1>
+        <h1 className='text-lg font-black'>Deposit Order</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm outline-none w-[40%] pl-4' />
       </div>
 
@@ -332,7 +332,7 @@ const TableswithdrawalRequest = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Withdrawal Request</h1>
+        <h1 className='text-lg font-black'>Withdrawal Request</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm outline-none w-[40%] pl-4' />
       </div>
 
@@ -377,7 +377,7 @@ const TablesUsers = ({ datas, rowsPerPage }) => {
     <div className=" overflow-auto w-full">
 
       <div className="flex justify-between">
-        <h1 className='text-lg'>Users</h1>
+        <h1 className='text-lg font-black'>Users</h1>
         <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm outline-none w-[40%] pl-4' />
       </div>
 
