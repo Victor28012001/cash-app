@@ -1,8 +1,14 @@
 import React from 'react'
 
 
-const TableApproval = ({slice}) => {
-    let conversations = slice
+const TableApproval = ({slice, records}) => {
+    let conversations 
+    
+    if(records.length > 0){
+        conversations = records
+    }else{
+        conversations = slice
+    }
 
 
     return (
@@ -20,9 +26,15 @@ const TableApproval = ({slice}) => {
     )
 }
 
-const TableInvestments = ({slice}) => {
+const TableInvestments = ({slice, records}) => {
 
-    let Agents = slice
+    let Agents
+
+    if(records.length > 0){
+        Agents = records
+    }else{
+        Agents = slice
+    }
 
     return (
         Agents.map((item) => (
@@ -42,9 +54,16 @@ const TableInvestments = ({slice}) => {
     )
 }
 
-const TableMessages = ({slice}) => {
+const TableMessages = ({slice, records}) => {
 
-    let Contacts = slice
+    let Contacts
+    
+    if(records.length > 0){
+        Contacts = records
+    }else{
+        Contacts = slice
+    }
+
 
     return (
         Contacts.map((item) => (<><tr className=" border-b-[1px]">
@@ -61,9 +80,16 @@ const TableMessages = ({slice}) => {
         )
     )
 }
-const TablePackages = ({slice}) => {
+const TablePackages = ({slice, records}) => {
 
-    let ContactList = slice
+    let ContactList
+    
+    if(records.length > 0){
+        ContactList = records
+    }else{
+        ContactList = slice
+    }
+
 
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">
@@ -82,9 +108,16 @@ const TablePackages = ({slice}) => {
     )
 }
 
-const TableAllUsers = ({slice}) => {
+const TableAllUsers = ({slice, records}) => {
 
-    let ContactList = slice
+    let ContactList
+    
+    if(records.length > 0){
+        ContactList = records
+    }else{
+        ContactList = slice
+    }
+
 
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">
@@ -104,9 +137,16 @@ const TableAllUsers = ({slice}) => {
 }
 
 
-const TableGateway = ({slice}) => {
+const TableGateway = ({slice, records}) => {
 
-    let ContactList = slice
+    let ContactList
+    
+    if(records.length > 0){
+        ContactList = records
+    }else{
+        ContactList = slice
+    }
+
 
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">
@@ -124,9 +164,17 @@ const TableGateway = ({slice}) => {
 
 
 
-const TableUsers = ({slice}) => {
+const TableUsers = ({slice, records}) => {
+    
+    let ContactList
+    
+    if(records.length > 0){
+        ContactList = records
+    }else{
+        ContactList = slice
+    }
 
-    let ContactList = slice
+
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">
             <td className="text-[#656375] font-['Poppins'] font-[700] text-[10px] leading-[15px] p-[10px]">{item.username}</td>
@@ -144,9 +192,16 @@ const TableUsers = ({slice}) => {
 
 
 
-const TabledepositOrder = ({slice}) => {
+const TabledepositOrder = ({slice, records}) => {
 
-    let ContactList = slice
+    let ContactList
+    
+    if(records.length > 0){
+        ContactList = records
+    }else{
+        ContactList = slice
+    }
+
 
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">
@@ -167,9 +222,16 @@ const TabledepositOrder = ({slice}) => {
 
 
 
-const TablewithdrawalRequest = ({slice}) => {
+const TablewithdrawalRequest = ({slice, records}) => {
 
-    let ContactList = slice
+    let ContactList
+    
+    if(records.length > 0){
+        ContactList = records
+    }else{
+        ContactList = slice
+    }
+
 
     return (
         ContactList.map((item) => (<><tr className=" border-b-[1px]">

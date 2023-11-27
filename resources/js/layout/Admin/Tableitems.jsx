@@ -1,9 +1,15 @@
 import React from 'react'
 
 
-const TablePackages = ({slice}) => {
+const TablePackages = ({slice, records}) => {
 
-    let conversations = slice
+    let conversations 
+    
+    if(records.length > 0){
+        conversations = records
+    }else{
+        conversations = slice
+    }
 
     return (
         conversations.map((item) => (<><tr className=" border-b-[1px]">
@@ -20,9 +26,16 @@ const TablePackages = ({slice}) => {
     // return console.log(conversations)
 }
 
-const TableMessages = ({slice}) => {
+const TableMessages = ({slice, records}) => {
 
-    let Agents = slice
+    let Agents 
+
+    if(records.length > 0){
+        Agents = records
+    }else{
+        Agents = slice
+    }
+
 
     return (
         Agents.map((item) => (
@@ -40,9 +53,16 @@ const TableMessages = ({slice}) => {
         )
     )
 }
-const TableTranxlogs = ({slice}) => {
+const TableTranxlogs = ({slice, records}) => {
 
-    let Contacts = slice
+    let Contacts
+    
+    if(records.length > 0){
+        Contacts = records
+    }else{
+        Contacts = slice
+    }
+
 
     return (
         Contacts.map((item) => (<><tr className=" border-b-[1px]">

@@ -8,9 +8,20 @@ const TablesPackges = ({ datas, rowsPerPage }) => {
   let data = datas[2].packages
   const [page, setPage] = useState(1);
   const { slice, range } = useTable(data, page, rowsPerPage);
+  const [records, setRecords] = useState([]);
+
+  const Filter = (event) => {
+    setRecords(data.filter(f => f.username.toLowerCase().includes(event.target.value)))
+  }
 
   return (
     <div className=" overflow-auto w-full">
+
+      <div className="flex justify-between">
+        <h1 className='text-lg'>Packges</h1>
+        <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded  outline-none w-[40%] pl-10' />
+      </div>
+
 
       <table className="table-auto w-full text-sm">
 
@@ -25,7 +36,7 @@ const TablesPackges = ({ datas, rowsPerPage }) => {
         </thead>
 
         <tbody>
-          <TablePackages slice={slice} />
+          <TablePackages slice={slice} records={records} />
         </tbody>
 
       </table>
@@ -39,9 +50,20 @@ const TablesMessages = ({ datas, rowsPerPage }) => {
   let data = datas[1].TableMessages
   const [page, setPage] = useState(1);
   const { slice, range } = useTable(data, page, rowsPerPage);
+  const [records, setRecords] = useState([]);
+
+  const Filter = (event) => {
+    setRecords(data.filter(f => f.username.toLowerCase().includes(event.target.value)))
+  }
 
   return (
     <div className=" overflow-auto w-full">
+
+      <div className="flex justify-between">
+        <h1 className='text-lg'>Messages</h1>
+        <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded  outline-none w-[40%] pl-10' />
+      </div>
+
 
       <table className="table-auto w-full text-sm">
 
@@ -57,7 +79,7 @@ const TablesMessages = ({ datas, rowsPerPage }) => {
         </thead>
 
         <tbody>
-          <TableMessages slice={slice} />
+          <TableMessages slice={slice} records={records} />
         </tbody>
 
       </table>
@@ -71,10 +93,21 @@ const TablesTranxlogs = ({ datas, rowsPerPage }) => {
   let data = datas[0].transactions
   const [page, setPage] = useState(1);
   const { slice, range } = useTable(data, page, rowsPerPage);
+  const [records, setRecords] = useState([]);
+
+  const Filter = (event) => {
+    setRecords(data.filter(f => f.username.toLowerCase().includes(event.target.value)))
+  }
 
 
   return (
     <div className=" overflow-auto w-full">
+
+      <div className="flex justify-between">
+        <h1 className='text-lg'>Transaction Logs</h1>
+        <input type="text" name="search" id="" onChange={Filter} placeholder='search....' className='border-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded  outline-none w-[40%] pl-10' />
+      </div>
+
 
       <table className="table-auto w-full text-sm">
 
@@ -91,7 +124,7 @@ const TablesTranxlogs = ({ datas, rowsPerPage }) => {
         </thead>
 
         <tbody>
-          <TableTranxlogs slice={slice} />
+          <TableTranxlogs slice={slice} records={records} />
         </tbody>
 
       </table>
