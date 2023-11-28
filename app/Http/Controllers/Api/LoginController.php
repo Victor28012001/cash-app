@@ -23,14 +23,20 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if(auth()->attempt($credentials, $request->filled('remember'))) {
-            if(auth()->user()->isAdmin()) {
-                return redirect()->route('admin');
+
+            auth()->user()->generateCode();
+            if(auth()->user()->is_2f_on){
+                return redirect()->route('2fa.index');
             }
-            else if(auth()->user()->isUser()) {
-                // return redirect()->route('user');
-                return response()->json(['status' => true, 'user' => auth()->user()]);
+            else{
+                if(auth()->user()->isAdmin()) {
+                    return redirect()->route('admin');
+                }
+                else if(auth()->user()->isUser()) {
+                    // return redirect()->route('user');
+                    return response()->json(['status' => true, 'user' => auth()->user()]);
+                }
             }
-            
         }
 
         return response()->json(['status' => false, 'message' => 'invalid username or password'], 500);

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TwoFAController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,11 @@ Route::group(['middleware' => ['auth:sanctum', 'user'], 'prefix' => 'user'], fun
 Route::group(['middleware' => ['auth:sanctum', 'admin'], 'prefix' => 'admin'], function () {
     Route::get('/admin', [UserController::class, 'userHome'])->name('admin');
 });
+
+  
+
+Route::get('2fa', [TwoFAController::class, 'index'])->name('2fa.index');
+
+Route::post('2fa', [TwoFAController::class, 'store'])->name('2fa.post');
+
+Route::get('2fa/reset', [TwoFAController::class, 'resend'])->name('2fa.resend');
