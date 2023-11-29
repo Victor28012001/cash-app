@@ -5,6 +5,13 @@ use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TwoFAController;
+use App\Http\Controllers\WithdrawalsController;
+use App\Http\Controllers\DepositsController;
+use App\Http\Controllers\PackagesController;
+use App\Http\Controllers\InvestmentsController;
+use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\GatewaysController;
+use App\Http\Controllers\SettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +59,17 @@ Route::get('2fa', [TwoFAController::class, 'index'])->name('2fa.index');
 Route::post('2fa', [TwoFAController::class, 'store'])->name('2fa.post');
 
 Route::get('2fa/reset', [TwoFAController::class, 'resend'])->name('2fa.resend');
+
+Route::resource('Withdrawals', WithdrawalsController::class);
+
+Route::resource('deposits', DepositsController::class);
+
+Route::resource('packages', PackagesController::class);
+
+Route::resource('investments', InvestmentsController::class);
+
+Route::resource('messages', MessagesController::class);
+
+Route::resource('gateways', GatewaysController::class);
+
+Route::resource('settings', SettingsController::class);
