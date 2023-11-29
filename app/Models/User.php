@@ -22,10 +22,16 @@ class User extends Authenticatable
      */
     
     protected $fillable = [
-        'firstname',
-        'lastname',
+        'username',
+        'refcode',
         'email',
         'password',
+        'country',
+        'address',
+        'balance',
+        'avatar',
+        'emailStatus',
+        'status',
     ];
 
     /**
@@ -46,6 +52,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'regDate' => 'datetime',
     ];
 
         /**

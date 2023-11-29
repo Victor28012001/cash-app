@@ -15,12 +15,18 @@ return new class extends Migration {
         if (!Schema::hasTable('users')) {
             Schema::create('users', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->string('firstname');
-                $table->string('lastname');
+                $table->string('username');
+                $table->string('refcode');
+                $table->string('address');
+                $table->string('avatar');
+                $table->string('country');
+                $table->decimal('balance', 8, 2);
                 $table->string('email')->unique();
+                $table->timestamp('regDate');
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
                 $table->enum('role', ['user', 'admin'])->default('user');
+                $table->enum('status', ['verified', 'unverified'])->default('unverified');
                 $table->boolean('is_2f_on')->default(true);
                 $table->rememberToken();
                 $table->timestamps();
