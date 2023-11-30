@@ -19,7 +19,7 @@ class PackagesFactory extends Factory
         return [
             //
             'name' => fake()->realText(),
-            'invested' => rand(20, 3100),
+            'increase' => rand(20, 3100),
             'bonus' => rand(3, 10),
             'status' => fake()->randomElement(['approved', 'pending', 'unapproved']),
             'MIN' => rand(10, 50),

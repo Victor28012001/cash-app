@@ -18,7 +18,7 @@ return new class extends Migration {
                 $table->string('email');
                 $table->longText('paymentMethod');
                 $table->tinyText('payDetails');
-                $table->decimal('payIcon');
+                $table->string('payIcon');
                 $table->softDeletes();
                 $table->timestamps();
             });

@@ -22,7 +22,7 @@ class WithdrawalsFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'mode' => fake()->realText(),
             'amount' => rand(20, 3100),
-            'date' => fake()->dateTimeBetween('1990-01-01', now())->format('d/m/Y'),
+            'date' => fake()->dateTimeBetween('-3 years', now()),
             'address' => Str::random(10),
             'referenceId' => Str::random(10),
             'status' => fake()->randomElement(['verified', 'unverified']),

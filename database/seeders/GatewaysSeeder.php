@@ -16,6 +16,6 @@ class GatewaysSeeder extends Seeder
     public function run()
     {
         //
-        Gateways::factory()->count(100)->create();
+        Gateways::factory()->count(5)->create();
     }
 }

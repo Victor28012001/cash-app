@@ -12,8 +12,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        if (!Schema::hasTable('seetings')) {
-            Schema::create('seetings', function (Blueprint $table) {
+        if (!Schema::hasTable('settings')) {
+            Schema::create('settings', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('siteUrl')->unique();
                 $table->string('siteName');

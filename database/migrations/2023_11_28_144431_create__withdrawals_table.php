@@ -12,8 +12,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        if (!Schema::hasTable('_withdrawals')) {
-            Schema::create('_withdrawals', function (Blueprint $table) {
+        if (!Schema::hasTable('withdrawals')) {
+            Schema::create('withdrawals', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('email')->unique();
                 $table->string('address');

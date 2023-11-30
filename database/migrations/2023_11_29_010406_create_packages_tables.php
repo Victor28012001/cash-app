@@ -12,8 +12,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        if (!Schema::hasTable('packages_tables')) {
-            Schema::create('packages_tables', function (Blueprint $table) {
+        if (!Schema::hasTable('packages')) {
+            Schema::create('packages', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('name');
                 $table->decimal('increase', 8, 2);
@@ -21,7 +21,7 @@ return new class extends Migration {
                 $table->enum('status', ['approved', 'pending', 'unapproved'])->default('unapproved');
                 $table->decimal('MIN', 8, 2);
                 $table->decimal('MAX', 8, 2);
-                $table->timestamp('duration')->nullable();
+                $table->integer('duration')->nullable();
                 $table->softDeletes();
                 $table->timestamps();
             });

@@ -19,10 +19,10 @@ class InvestmentsFactory extends Factory
     {
         return [
             'username' => fake()->name(),
-            'packageName' => fake()->realText(),
+            'packageName' => fake()->randomLetter(),
             'invested' => rand(20, 3100),
             'increase' => rand(5, 30),
-            'status' => fake()->randomElement(['verified', 'unverified']),
+            'status' => fake()->randomElement(['approved', 'pending', 'unapproved']),
             'ROI' => rand(20, 3100),
             'investId' => Str::random(10),
         ];

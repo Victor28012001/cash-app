@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
-class CreateUserSeeder extends Seeder
+class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -28,9 +28,8 @@ class CreateUserSeeder extends Seeder
             'address' => fake()->address(),
             'country' => fake()->country(),
             'balance' => rand(20, 3100),
-            'regDate' => fake()->dateTimeBetween('1990-01-01', now())->format('d/m/Y'),
+            'regDate' => fake()->dateTimeBetween('-3 years', now()),
             'refcode' => Str::random(10),
-            'name' => fake()->name(),
             'status' => fake()->randomElement(['verified', 'unverified']),
             'role' => 'admin',
             'is_2f_on' => true,

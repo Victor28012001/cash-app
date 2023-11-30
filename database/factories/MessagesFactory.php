@@ -23,7 +23,7 @@ class MessagesFactory extends Factory
             'image' => 'https://placeimg.com/100/100/any?' . rand(1, 100),
             'email' => fake()->unique()->safeEmail(),
             'status' => fake()->randomElement(['sent', 'unsent', 'read', 'pending']),
-            'date' => fake()->dateTimeBetween('2021-11-01', now())->format('d/m/Y'),
+            'date' => fake()->dateTimeBetween('-3 years', now()),
         ];
     }
 }

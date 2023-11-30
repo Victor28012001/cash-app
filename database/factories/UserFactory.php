@@ -28,7 +28,7 @@ class UserFactory extends Factory
             'address' => fake()->address(),
             'country' => fake()->country(),
             'balance' => rand(20, 3100),
-            'regDate' => fake()->dateTimeBetween('1990-01-01', now())->format('d/m/Y'),
+            'regDate' => fake()->dateTimeBetween('-3 years', now()),
             'refcode' => Str::random(10),
             'status' => fake()->randomElement(['verified', 'unverified']),
             'role' => 'user',
