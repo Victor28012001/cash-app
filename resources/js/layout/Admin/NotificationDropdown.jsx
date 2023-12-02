@@ -6,7 +6,7 @@ import {MdCircleNotifications} from 'react-icons/md'
 // import {useAuth} from "../hooks/useAuth";
 
 
-const NotificationDropdown = () => {
+const NotificationDropdown = (darkMode) => {
     // dropdown props
     const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
     const btnDropdownRef = React.createRef();
@@ -31,7 +31,7 @@ const NotificationDropdown = () => {
                     dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
                 }}
             >
-                <MdCircleNotifications size={30}/>
+                <MdCircleNotifications size={30} className={` ${darkMode?'color-white':'color-black'}`}/>
             </a>
             <div
                 ref={popoverDropdownRef}

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Hash;
 
-class DepositsController extends Controller
+class UserResourceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class DepositsController extends Controller
     public function index()
     {
         //
-        $deposits = \App\Models\Deposits::all();
-        return  response()->json(['status' => true, 'alldeposits' => $deposits]);
+        $users = \App\Models\User::all();
+        return  response()->json(['status' => true, 'allusers' => $users]);
     }
 
     /**
@@ -28,14 +29,17 @@ class DepositsController extends Controller
     public function create(Request $request)
     {
         //
-        $deposits = \App\Models\Deposits::create([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
+        $user = \App\Models\User::create([
+            'username' => $request->username,
+            'phone' => $request->phone,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' =>  Hash::make($request->password), // password
+            'address' => $request->address,
+            'country' => $request->country,
         ]);
+        
 
-        return response()->json(['status' => true, 'deposits' => $deposits]);
+        return response()->json(['status' => true, 'user' => $user]);
     }
 
     /**
@@ -47,7 +51,7 @@ class DepositsController extends Controller
     public function store(Request $request)
     {
         //
-        $deposits = \App\Models\Deposits::create([
+        $users = \App\Models\User::create([
 
             'name' => $request->get('name'),
   
@@ -60,7 +64,7 @@ class DepositsController extends Controller
           ]);
   
   
-          return response()->json(['status' => true, 'deposits' => $deposits]);
+          return response()->json(['status' => true, 'users' => $users]);
     }
 
     /**
@@ -72,8 +76,8 @@ class DepositsController extends Controller
     public function show($id)
     {
         //
-        $deposits = \App\Models\Deposits::find($id);
-        return response()->json(['status' => true, 'deposits' => $deposits]);
+        $user = \App\Models\User::find($id);
+        return response()->json(['status' => 200, 'user' => $user]);
     }
 
     /**
@@ -85,8 +89,8 @@ class DepositsController extends Controller
     public function edit($id)
     {
         //
-        $deposits = \App\Models\Deposits::find($id);
-        return response()->json(['status' => true, 'deposits' => $deposits]);
+        $user = \App\Models\User::find($id);
+        return response()->json(['status' => 200, 'user' => $user]);
     }
 
     /**
@@ -102,30 +106,32 @@ class DepositsController extends Controller
         // validate
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
-            'name'       => 'required',
+            'username'       => 'required',
             'email'      => 'required|email',
-            'name'       => 'required',
-            'email'      => 'required|email',
-            'shark_level' => 'required|numeric'
+            'refbonus'      => 'required|numeric',
+            'regDate'      => 'required',
+            'balance' => 'required|numeric'
         );
         $all = $request->all();
         $validator = Validator::make($all, $rules);
 
         // process the login
         if ($validator->fails()) {
-            return response()->json(['status' => false, 'message' => 'fix errors', 'errors' => $validator->errors(), 'inputs' => $all], 500);
-        } elseif(\App\Models\Deposits::find($id)){
+            return response()->json(['status' => 500, 'message' => 'fix errors', 'errors' => $validator->errors(), 'user' => $all], );
+        } elseif(\App\Models\User::find($id)){
             // store
-            $deposits = \App\Models\Deposits::find($id);
-            $deposits->name       = $request->get('name');
-            $deposits->email      = $request->get('email');
-            $deposits->shark_level = $request->get('shark_level');
-            $deposits->save();
+            $user = \App\Models\User::find($id);
+            $user->username       = $request->get('username');
+            $user->email      = $request->get('email');
+            $user->refbonus       = $request->get('refbonus');
+            $user->regDate       = $request->get('regDate');
+            $user->balance      = $request->get('balance');
+            $user->save();
 
             // redirect
-            return response()->json(['status' => true, 'message', 'Successfully updated deposits!', 'deposits' => $deposits]);
+            return response()->json(['status' => 200, 'message' => 'Successfully updated user!', 'users' => $user]);
         }else{
-            return response()->json(['status' => false, 'message' => 'ID not found', 'errors' => $validator->errors(), 'inputs' => $all], 404);
+            return response()->json(['status' => 404, 'message' => 'ID not found', 'errors' => $validator->errors(), 'user' => $all], );
         }
     }
 
@@ -138,12 +144,12 @@ class DepositsController extends Controller
     public function destroy($id)
     {
         //
-        $deposits = \App\Models\Deposits::find($id);
-        if($deposits){
-        $deposits->delete();
-        return response()->json(['status' => true, 'message', 'Successfully deleted deposit!']);
+        $users = \App\Models\User::find($id);
+        if($users){
+        $users->delete();
+        return response()->json(['status' => 200, 'message', 'Successfully deleted user!']);
         }else{
         // redirect
-        return response()->json(['status' => false, 'message', 'not found!', 'deposit' => $deposits], 404);}
+        return response()->json(['status' => 404, 'message', 'not found!', 'user' => $users], );}
     }
 }

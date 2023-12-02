@@ -30,6 +30,9 @@ import SendMessages from '../Components/Admin/SendMessages'
 import Settings from '../Components/Admin/Settings'
 import UserApprovals from '../Components/Admin/UserApprovals'
 import WithdrawalManage from '../Components/Admin/WithdrawalManage';
+import EditUsers from '../Components/Admin/EditUsers';
+import EditPackages from '../Components/Admin/EditPackages';
+import EditInvestment from '../Components/Admin/EditInvestment'
 
 
 import Home from '../Components/Frontend/Home';
@@ -268,6 +271,24 @@ export const routes = createBrowserRouter([
     path: "/WithdrawalManage",
     exact: true,
     element: <WithdrawalManage />,
+  },
+  {
+    name: "Edit User",
+    path: "/EditUser/:id",
+    exact: true,
+    element: <EditUsers />,
+  },
+  {
+    name: "Edit Package",
+    path: "/EditPackage/:id",
+    exact: true,
+    element: <EditPackages />,
+  },
+  {
+    name: "Edit Investment",
+    path: "/EditInvestment/:id",
+    exact: true,
+    element: <EditInvestment />,
   },
 ]);
 

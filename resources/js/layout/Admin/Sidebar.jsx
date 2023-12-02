@@ -3,12 +3,12 @@ import { useState } from "react";
 import SidebarItem from "./SidebarItem"
 import UserSidebar from "../../Data/UserSidebar"
 
-export default function Sidebar() {
+export default function Sidebar({darkMode}) {
   const [expanded, setExpanded] = useState(true)
 
   return (
-    <aside className="h-screen">
-      <nav className="relative h-full flex flex-col bg-white shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
+    <aside className={`h-screen`}>
+      <nav className={`relative h-full flex flex-col ${darkMode?'bg-white color-black':'bg-[#1e222d] color-white'} shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]`}>
         <div className="p-4 pb-2 flex justify-between items-center">
           <img
             src="https://img.logoipsum.com/243.svg"

@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { TickerTape } from "react-ts-tradingview-widgets";
 import { FcInspection } from "react-icons/fc";
 
-const Title = (datas) => {
+const Title = (datas, darkMode) => {
 
 
   const [copySuccess, setCopySuccess] = useState('');
@@ -27,6 +27,8 @@ const Title = (datas) => {
   }
 
 
+  console.log(darkMode);
+
   const titleData = datas.datas
 
 
@@ -48,7 +50,7 @@ const Title = (datas) => {
   })
 
   return (
-    <div className="absolute top-[80px] w-[100%]">
+    <div className={`absolute top-[80px] w-[100%] ${darkMode?'bg-white':'bg-[#0f0f00]'}`}>
       <div className="cont">
         <div className='title flex justify-between px-[12px]'>
           <div className='welcome'>

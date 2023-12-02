@@ -20,7 +20,7 @@ export default function AdminSidebarItem({ item }) {
     if (item.childrens) {
         return (
             <div className={open ? "sidebar-item open" : "sidebar-item flex flex-col place-items-center rounded"}>
-                    <Link to={item.path} className={`sidebar-title p-[10px] flex flex-row justify-between w-full items-center hover:bg-[rgba(218, 235, 255, 0.79)] hover:rounded ${active}`} onClick={() => setOpen(!open)}>
+                    <Link key={item.path} to={item.path} className={`sidebar-title p-[10px] flex flex-row justify-between w-full items-center hover:bg-[rgba(218, 235, 255, 0.79)] hover:rounded ${active}`} onClick={() => setOpen(!open)}>
                         {item.icon}
                         <p className="font-semibold text-[#818485] font-[600] text-[20px] leading-[30px]">{item.name}</p>
                         <MdExpandCircleDown onClick={() => setOpen(!open)} className="toggle-btn" style={iconStyles} />
@@ -30,7 +30,7 @@ export default function AdminSidebarItem({ item }) {
                     <hr className=" -ml-0.5 h-0.5 w-80 bg-black-600" />
                     {
                         item.childrens.map((child) => (
-                            <Link to={child.path}>
+                            <Link key={item.path} to={child.path}>
                                 <div className={`cursor-pointer hover:text-[#DAEBFF] hover:bg-[rgba(218, 235, 255, 0.79)] hover:rounded ${active}`}>
                                     <p className="font-semibold text-[#818485] font-[500] text-[14px] leading-[21px] mt-[15px] self-center">{child.name}</p>
                                     <hr className=" -ml-0.5 h-0.5 w-80 bg-black-600" />
@@ -45,7 +45,7 @@ export default function AdminSidebarItem({ item }) {
         )
     } else {
         return (
-            <Link to={item.path || "#"} className={`sidebar-item plain  flex flex-row p-[10px] justify-between items-center w-full  hover:bg-[#DAEBFF] rounded ${active}`}>
+            <Link key={item.path} to={item.path || "#"} className={`sidebar-item plain  flex flex-row p-[10px] justify-between items-center w-full  hover:bg-[#DAEBFF] rounded ${active}`}>
                 {item.icon}
                 <p className="font-semibold self-center text-[#818485] font-[600] text-[20px] leading-[30px]">{item.name}</p>
                 <p></p>

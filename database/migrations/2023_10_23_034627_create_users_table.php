@@ -17,8 +17,10 @@ return new class extends Migration {
                 $table->bigIncrements('id');
                 $table->string('username');
                 $table->string('refcode');
+                $table->string('refbonus');
                 $table->string('address');
                 $table->string('avatar');
+                $table->string('phone');
                 $table->string('country');
                 $table->decimal('balance', 8, 2);
                 $table->string('email')->unique();

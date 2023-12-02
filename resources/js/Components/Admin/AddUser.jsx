@@ -1,7 +1,48 @@
-import React from 'react'
+import {React, useState, useEffect} from 'react'
 import AdminLayout from '../../layout/Admin/AdminLayout'
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const AddUser = () => {
+
+  
+  const navigate = useNavigate()
+  const [settings, setSettings] = useState([])
+  const [error, setError] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  
+  const handleInput = (e) => {
+    e.persist
+    setSettings({ ...settings, [e.target.name]: e.target.value })
+  }
+
+  const makeUpdate = (e) => {
+    e.preventDefault()
+    const data = settings
+
+    axios.put(`/api/settings/${id}`, data)
+      .then(res => {
+        if(res.data.status === 200){
+          swal("Success!", res.data.message, "success");
+          navigate('/AllPackages')
+        }
+        else if(res.data.status === 500){
+          navigate('/AllPackages')
+        }
+        else if(res.data.status === 404){
+          swal("Error!", res.data.message, "error");
+          navigate('/AllPackages')
+        }
+        setLoading(false)
+      })
+  }
+
+  if(loading){
+    return <h4>Loading....</h4>
+  }
+
   return (
     <AdminLayout>
       <div className='bg-[#f0f0f0] py-[25px] h-full'>

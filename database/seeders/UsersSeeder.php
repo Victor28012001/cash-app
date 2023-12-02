@@ -20,6 +20,7 @@ class UsersSeeder extends Seeder
         //
         User::factory()->create([
             'username' => fake()->name(),
+            'phone' => str_replace('+', '', fake()->unique()->e164PhoneNumber()),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' =>  Hash::make('password'), // password
@@ -30,6 +31,7 @@ class UsersSeeder extends Seeder
             'balance' => rand(20, 3100),
             'regDate' => fake()->dateTimeBetween('-3 years', now()),
             'refcode' => Str::random(10),
+            'refbonus' => rand(20, 3100),
             'status' => fake()->randomElement(['verified', 'unverified']),
             'role' => 'admin',
             'is_2f_on' => true,

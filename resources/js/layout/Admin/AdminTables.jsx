@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useTable from '../../hooks/useTable';
 import AdminTablesFooter from './AdminTablesFooter';
 import { TablePackages, TableApproval, TableInvestments, TableMessages, TableUsers, TableGateway, TableAllUsers, TabledepositOrder, TablewithdrawalRequest } from "./AdminTableitems";
@@ -32,6 +32,7 @@ const TablesApproval = ({ datas, rowsPerPage }) => {
             <th scope="col" className='text-left text-sm'>Avatar</th>
             <th scope="col" className='text-left text-sm'>User Status</th>
             <th scope="col" className='text-left text-sm'>Date</th>
+            <th scope="col" className='text-left text-sm'>Action</th>
           </tr>
         </thead>
 
@@ -47,10 +48,45 @@ const TablesApproval = ({ datas, rowsPerPage }) => {
 }
 
 const TablesInvestments = ({ datas, rowsPerPage }) => {
-  let data = datas[1].investments
   const [page, setPage] = useState(1);
-  let { slice, range } = useTable(data, page, rowsPerPage);
+  const [isLoading, setLoading] = useState(true);
+
+  const [packages, setPackages] = useState([]);
+
+
+  let data
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await axios.get("http://localhost:8000/api/investments")
+        .then(res => res)
+        .then(res => {
+          setLoading(false);
+          setPackages(res.data.allinvestments)
+        }
+        )
+        .catch(() => {
+          console.log('ok')
+        });
+    }
+
+    fetchApi()
+  }, [])
+
+
+  data = packages
+
+  const { slice, range } = useTable(data, page, rowsPerPage);
   const [records, setRecords] = useState([]);
+
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
+  if (!packages?.length) {
+    return <h1>There are no users to be displayed 🤕</h1>
+  }
 
   const Filter = (event) => {
     setRecords(data.filter(f => f.username.toLowerCase().includes(event.target.value)))
@@ -71,13 +107,15 @@ const TablesInvestments = ({ datas, rowsPerPage }) => {
 
         <thead>
           <tr className="">
-            <th scope="col" className='text-left flex text-sm'>Username</th>
+            <th scope="col" className='text-left flex text-sm'>S/N</th>
+            <th scope="col" className='text-left text-sm'>Username</th>
             <th scope="col" className='text-left text-sm'>Package</th>
             <th scope="col" className='text-left text-sm'>Invested</th>
             <th scope="col" className='text-left text-sm'>Increase</th>
             <th scope="col" className='text-left text-sm'>ROI</th>
             <th scope="col" className='text-left text-sm'>Status</th>
             <th scope="col" className='text-left text-sm'>Investment ID</th>
+            <th scope="col" className='text-left text-sm'>Action</th>
           </tr>
         </thead>
 
@@ -122,6 +160,7 @@ const TablesMessages = ({ datas, rowsPerPage }) => {
             <th scope="col" className='text-left text-sm'>Image</th>
             <th scope="col" className='text-left text-sm'>Status</th>
             <th scope="col" className='text-left text-sm'>Date</th>
+            <th scope="col" className='text-left text-sm'>Action</th>
           </tr>
         </thead>
 
@@ -139,14 +178,50 @@ const TablesMessages = ({ datas, rowsPerPage }) => {
 
 
 const TablesPackage = ({ datas, rowsPerPage }) => {
-  let data = datas[3].package
   const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(true);
+
+  const [packages, setPackages] = useState([]);
+
+
+  let data
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await axios.get("http://localhost:8000/api/packages/")
+        .then(res => res)
+        .then(res => {
+          setLoading(false);
+          setPackages(res.data.allpackages)
+        }
+        )
+        .catch(() => {
+          console.log('ok')
+        });
+    }
+
+    fetchApi()
+  }, [])
+
+
+  data = packages
+
   const { slice, range } = useTable(data, page, rowsPerPage);
   const [records, setRecords] = useState([]);
+
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
+  if (!packages?.length) {
+    return <h1>There are no users to be displayed 🤕</h1>
+  }
 
   const Filter = (event) => {
     setRecords(data.filter(f => f.name.toLowerCase().includes(event.target.value)))
   }
+
 
 
   return (
@@ -161,6 +236,7 @@ const TablesPackage = ({ datas, rowsPerPage }) => {
 
         <thead>
           <tr className="">
+            <th scope="col" className='text-left text-sm text-left'>S/N</th>
             <th scope="col" className='text-left text-sm text-left'>Name</th>
             <th scope="col" className='text-left text-sm' >Daily Increase</th>
             <th scope="col" className='text-left text-sm'>bonus</th>
@@ -168,6 +244,7 @@ const TablesPackage = ({ datas, rowsPerPage }) => {
             <th scope="col" className='text-left text-sm'>MIN</th>
             <th scope="col" className='text-left text-sm'>MAX</th>
             <th scope="col" className='text-left text-sm'>Time & Date</th>
+            <th scope="col" className='text-left text-sm'>Action</th>
           </tr>
         </thead>
 
@@ -209,6 +286,7 @@ const TablesGateway = ({ datas, rowsPerPage }) => {
             <th scope="col" className='text-left text-sm' >details</th>
             <th scope="col" className='text-left text-sm'>Email</th>
             <th scope="col" className='text-left text-sm'>Icon</th>
+            <th scope="col" className='text-left text-sm'>Action</th>
           </tr>
         </thead>
 
@@ -301,6 +379,7 @@ const TablesdepositOrder = ({ datas, rowsPerPage }) => {
             <th scope="col" className='text-left text-sm' >refferer ID</th>
             <th scope="col" className='text-left text-sm'>referrer Pay</th>
             <th scope="col" className='text-left text-sm'>Reg. Date</th>
+            <th scope="col" className='text-left text-sm'>Action</th>
           </tr>
         </thead>
 
@@ -347,6 +426,7 @@ const TableswithdrawalRequest = ({ datas, rowsPerPage }) => {
             <th scope="col" className='text-left text-sm'>Status</th>
             <th scope="col" className='text-left text-sm' >refferer ID</th>
             <th scope="col" className='text-left text-sm'>Reg. Date</th>
+            <th scope="col" className='text-left text-sm'>Action</th>
           </tr>
         </thead>
 
@@ -364,10 +444,45 @@ const TableswithdrawalRequest = ({ datas, rowsPerPage }) => {
 }
 
 const TablesUsers = ({ datas, rowsPerPage }) => {
-  let data = datas[6].users
   const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(true);
+
+  const [users, setUsers] = useState([]);
+
+
+  let data
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await axios.get("http://localhost:8000/api/users/")
+        .then(res => res)
+        .then(res => {
+          setLoading(false);
+          setUsers(res.data.allusers)
+        }
+        )
+        .catch(() => {
+          console.log('ok')
+        });
+    }
+
+    fetchApi()
+  }, [])
+
+
+  data = users
+
   const { slice, range } = useTable(data, page, rowsPerPage);
   const [records, setRecords] = useState([]);
+
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
+  if (!users?.length) {
+    return <h1>There are no users to be displayed 🤕</h1>
+  }
 
   const Filter = (event) => {
     setRecords(data.filter(f => f.username.toLowerCase().includes(event.target.value)))
@@ -385,11 +500,13 @@ const TablesUsers = ({ datas, rowsPerPage }) => {
 
         <thead>
           <tr className="text-sm">
+            <th scope="col" className='text-left '>S/N</th>
             <th scope="col" className='text-left '>Username</th>
             <th scope="col" className='text-left text-sm'>Email</th>
-            <th scope="col" className='text-left text-sm' >refferal Code</th>
+            <th scope="col" className='text-left text-sm' >refferal Bonus</th>
             <th scope="col" className='text-left text-sm'>account Balance</th>
             <th scope="col" className='text-left text-sm'>Reg. Date</th>
+            <th scope="col" className='text-left text-sm'>Action</th>
           </tr>
         </thead>
 
