@@ -22,18 +22,18 @@ const AddUser = () => {
     e.preventDefault()
     const data = settings
 
-    axios.put(`/api/settings/${id}`, data)
+    axios.post(`/api/settings/${id}`, data)
       .then(res => {
         if(res.data.status === 200){
           swal("Success!", res.data.message, "success");
-          navigate('/AllPackages')
+          navigate('/AllUsers')
         }
         else if(res.data.status === 500){
-          navigate('/AllPackages')
+          navigate('/AllUsers')
         }
         else if(res.data.status === 404){
           swal("Error!", res.data.message, "error");
-          navigate('/AllPackages')
+          navigate('/AllUsers')
         }
         setLoading(false)
       })
@@ -48,34 +48,34 @@ const AddUser = () => {
       <div className='bg-[#f0f0f0] py-[25px] h-full'>
         <div className="cont w-[90%] mb-[20px] ml-[50%] translate-x-[-50%] text-bold flex flex-col items-center justify-around border-0 px-3 py-3 text-blueGray-600 relative bg-white rounded-[15px] text-sm shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] pl-10">
 
-          <form action="" method="post" className=" flex flex-col gap-[18px] w-[90%] py-[5px]">
+          <form action="" onSubmit={makeUpdate} method="post" className=" flex flex-col gap-[18px] w-[90%] py-[5px]">
 
             <label htmlFor="f-name" className='text-[#8f8f8f]'>Username</label>
-            <input placeholder="Username" type="text" name="f-name" id="f-name" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
+            <input onChange={handleInput} value='' placeholder="Username" type="text" name="f-name" id="f-name" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
 
 
             <label htmlFor="email" className='text-[#8f8f8f]'>Email</label>
-            <input placeholder="Email" type="email" name="email" id="email" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
+            <input onChange={handleInput} value='' placeholder="Email" type="email" name="email" id="email" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
 
 
             <label htmlFor="password" className='text-[#8f8f8f]'>Password</label>
-            <input placeholder="Password" type="password" name="password" id="password" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
+            <input onChange={handleInput} value='' placeholder="Password" type="password" name="password" id="password" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
 
 
             <label htmlFor="Address" className='text-[#8f8f8f]'>Confirm Password</label>
-            <input placeholder="Confirm Password" type="text" name="Address" id="Address" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
+            <input onChange={handleInput} value='' placeholder="Confirm Password" type="text" name="Address" id="Address" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
 
 
             <label htmlFor="country" className='text-[#8f8f8f]'>Phone Number</label>
-            <input placeholder="Phone Number" type="text" name="country" id="country" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
+            <input onChange={handleInput} value='' placeholder="Phone Number" type="text" name="country" id="country" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
 
 
             <label htmlFor="f-name" className='text-[#8f8f8f]'>Country</label>
-            <input placeholder="Country" type="text" name="Country" id="Country" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
+            <input onChange={handleInput} value='' placeholder="Country" type="text" name="Country" id="Country" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
 
 
             <label htmlFor="Address" className='text-[#8f8f8f]'>Address</label>
-            <input placeholder="Address" type="Address" name="Address" id="Address" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
+            <input onChange={handleInput} value='' placeholder="Address" type="Address" name="Address" id="Address" className='border-0 px-3 py-3 placeholder-blueGray-500 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10' />
 
             <div className="flex"><input type="checkbox" name="terms" id="terms" />
             <span>I accept the <a href="">Terms Of Service</a></span>
