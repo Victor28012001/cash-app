@@ -28,6 +28,19 @@ class UserResourceController extends Controller
      */
     public function create(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'username' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:12'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'address' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['status' => false, 'message' => 'fix errors', 'errors' => $validator->errors()], 500);
+        }
+
         //
         $user = \App\Models\User::create([
             'username' => $request->username,
@@ -39,7 +52,7 @@ class UserResourceController extends Controller
         ]);
         
 
-        return response()->json(['status' => true, 'user' => $user]);
+        return response()->json(['status' => 200, 'user' => $user]);
     }
 
     /**
@@ -51,20 +64,31 @@ class UserResourceController extends Controller
     public function store(Request $request)
     {
         //
-        $users = \App\Models\User::create([
+        $validator = Validator::make($request->all(), [
+            'username' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:12'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'address' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
+        ]);
 
-            'name' => $request->get('name'),
-  
-            'description' => $request->get('description'),
-  
-            'price' => $request->get('price'),
-  
-            'count' => $request->get('count'),
-  
-          ]);
-  
-  
-          return response()->json(['status' => true, 'users' => $users]);
+        if ($validator->fails()) {
+            return response()->json(['status' => false, 'message' => 'fix errors', 'errors' => $validator->errors()], 500);
+        }
+
+        //
+        $user = \App\Models\User::create([
+            'username' => $request->username,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'password' =>  Hash::make($request->password), // password
+            'address' => $request->address,
+            'country' => $request->country,
+        ]);
+        
+
+        return response()->json(['status' => 200,'message' => 'new user created', 'user' => $user]);
     }
 
     /**

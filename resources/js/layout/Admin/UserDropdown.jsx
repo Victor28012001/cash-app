@@ -1,4 +1,7 @@
 import React from "react";
+import { useState, useRef } from 'react';
+// import { useLocation } from "react-router-dom";
+import { FcInspection } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { createPopper } from "@popperjs/core";
 import { useContext } from "react";
@@ -7,7 +10,28 @@ import profile from '../../Assets/team-1-800x800.jpg'
 
 const UserDropdown = () => {
 
-    const {authData} = useContext(AuthContext);
+    const { authData } = useContext(AuthContext);
+
+
+
+    const [copySuccess, setCopySuccess] = useState('');
+    const [text, setText] = useState('your referral link here');
+    let timeoutID = null;
+
+
+    async function copyToClipboard() {
+        try {
+            if (navigator?.clipboard?.writeText) {
+                await navigator.clipboard.writeText(text);
+                setCopySuccess('Copied!');
+                timeoutID = setTimeout(() => {
+                    setCopySuccess('');
+                }, 1000);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
 
 
     // dropdown props
@@ -71,6 +95,18 @@ const UserDropdown = () => {
                 >
                     Settings
                 </Link>
+                <div className='refer-code flex items-center'>
+                    <input type="text" name="refer-code" id="refer-code" value={text} className='text-blueGray-300 pl-2 w-[250px] border-[1px] border-[#f0f0f0] border-solid h-[75%] rounded-tl-[4px] rounded-bl-[4px] outline-none focus:outline-none focus:ring' readOnly onChange={e => setText(e.target.value)} />
+                    {
+                        /* Logical shortcut for only displaying the 
+                           button if the copy command exists */
+                        navigator?.clipboard?.writeText &&
+                        <div className='relative'>
+                            <button className="flex items-center text-sm bg-[#000] text-[#fff] h-[35px] p-[4px] rounded-tr-[4px] rounded-br-[4px]" onClick={copyToClipboard}><FcInspection />copy</button>
+                            <div className="absolute text-[#0fffdf] ">{copySuccess}</div>
+                        </div>
+                    }
+                </div>
                 <div className="h-0 my-2 border border-solid border-blueGray-100" />
                 <Link
                     to="#pablo"

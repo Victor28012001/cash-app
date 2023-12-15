@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             PackagesSeeder::class,
             SettingsSeeder::class,
             WithdrawalsSeeder::class,
+            TopTradersSeeder::class,
         ]);
     }
 }

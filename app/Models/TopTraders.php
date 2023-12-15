@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Investments extends Model
+class TopTraders extends Model
 {
     use HasFactory;
         
     protected $fillable = [
 
-        'packageName',
-        'invested',
-        'increase',
-        'status',
-        'ROI',
+        'firstName',
+        'lastName',
+        'winRate',
+        'profitShare',
+        'active',
      ];
 
 }

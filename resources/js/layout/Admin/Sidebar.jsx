@@ -1,5 +1,6 @@
 import { BsArrowBarRight, BsArrowBarLeft, BsThreeDotsVertical } from "react-icons/bs";
 import { useState } from "react";
+import {Link} from 'react-router-dom'
 import SidebarItem from "./SidebarItem"
 import UserSidebar from "../../Data/UserSidebar"
 
@@ -29,6 +30,7 @@ export default function Sidebar({darkMode}) {
           {UserSidebar.map((item, index) => <SidebarItem key={index} myKey={index} item={item} expanded={expanded} />)}
         </ul>
 
+        <Link to='/dashboard/Profile'>
         <div className="shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] left-0 w-[100%] flex p-3 absolute bottom-0">
           <img
             src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
@@ -48,6 +50,7 @@ export default function Sidebar({darkMode}) {
             <BsThreeDotsVertical size={20} />
           </div>
         </div>
+        </Link>
       </nav>
     </aside>
   )

@@ -1,62 +1,63 @@
+
 // TradingViewWidget.jsx
 
 import React, { useEffect, useRef } from 'react';
 
 let tvScriptLoadingPromise;
 
-const TradingViewWidget = () => {
-    const onLoadScriptRef = useRef();
+export default function TradingViewWidget() {
+  const onLoadScriptRef = useRef();
 
-    useEffect(
-        () => {
-            onLoadScriptRef.current = createWidget;
+  useEffect(
+    () => {
+      onLoadScriptRef.current = createWidget;
 
-            if (!tvScriptLoadingPromise) {
-                tvScriptLoadingPromise = new Promise((resolve) => {
-                    const script = document.createElement('script');
-                    script.id = 'tradingview-widget-loading-script';
-                    script.src = 'https://s3.tradingview.com/tv.js';
-                    script.type = 'text/javascript';
-                    script.onload = resolve;
+      if (!tvScriptLoadingPromise) {
+        tvScriptLoadingPromise = new Promise((resolve) => {
+          const script = document.createElement('script');
+          script.id = 'tradingview-widget-loading-script';
+          script.src = 'https://s3.tradingview.com/tv.js';
+          script.type = 'text/javascript';
+          script.onload = resolve;
 
-                    document.head.appendChild(script);
-                });
-            }
+          document.head.appendChild(script);
+        });
+      }
 
-            tvScriptLoadingPromise.then(() => onLoadScriptRef.current && onLoadScriptRef.current());
+      tvScriptLoadingPromise.then(() => onLoadScriptRef.current && onLoadScriptRef.current());
 
-            return () => onLoadScriptRef.current = null;
+      return () => onLoadScriptRef.current = null;
 
-            function createWidget() {
-                if (document.getElementById('tradingview_b6a0a') && 'TradingView' in window) {
-                    new window.TradingView.widget({
-                        autosize: true,
-                        symbol: "NASDAQ:AAPL",
-                        interval: "D",
-                        timezone: "Africa/Lagos",
-                        theme: "light",
-                        style: "1",
-                        locale: "en",
-                        enable_publishing: false,
-                        backgroundColor: "rgba(0, 0, 0, 1)",
-                        allow_symbol_change: true,
-                        container_id: "tradingview_b6a0a"
-                    });
-                }
-            }
-        },
-        []
-    );
+      function createWidget() {
+        if (document.getElementById('tradingview_a2438') && 'TradingView' in window) {
+          new window.TradingView.widget({
+            autosize: true,
+            symbol: "BITSTAMP:BTCUSD",
+            interval: "D",
+            timezone: "Etc/UTC",
+            theme: "light",
+            style: "3",
+            locale: "en",
+            enable_publishing: false,
+            backgroundColor: "#f0f0f0",
+            gridColor: "rgba(255, 255, 255, 0)",
+            hide_top_toolbar: true,
+            allow_symbol_change: true,
+            hide_volume: true,
+            container_id: "tradingview_a2438"
+          });
+        }
+      }
+    },
+    []
+  );
 
-    return (
-        <div className='tradingview-widget-container bg-white rounded-lg shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]' style={{ height: "45vh", width: "95%", marginLeft:'50%', translate: '-50% 0' }}>
-            <div id='tradingview_b6a0a' style={{ height: "calc(100% - 32px)", width: "100%" }} />
-            {/* <div className="tradingview-widget-copyright">
-                <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on TradingView</span></a>
-            </div> */}
-        </div>
-    );
+  return (
+    <div className='tradingview-widget-container h-[50%] p-1 rounded-lg' style={{ height: "50%", width: "100%", marginLeft:'50%', translate: '-50% 0' }}>
+      <div id='tradingview_a2438' className='' style={{ height: "100%", width: "100%" }} />
+      <div className="tradingview-widget-copyright">
+        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on TradingView</span></a>
+      </div>
+    </div>
+  );
 }
-
-
-export default TradingViewWidget

@@ -5,10 +5,45 @@ import AdminTablesFooter from './AdminTablesFooter';
 import { TablePackages, TableApproval, TableInvestments, TableMessages, TableUsers, TableGateway, TableAllUsers, TabledepositOrder, TablewithdrawalRequest } from "./AdminTableitems";
 
 const TablesApproval = ({ datas, rowsPerPage }) => {
-  let data = datas[0].approval
   const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(true);
+
+  const [users, setUsers] = useState([]);
+
+
+  let data
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await axios.get("http://localhost:8000/api/users/")
+        .then(res => res)
+        .then(res => {
+          setLoading(false);
+          setUsers(res.data.allusers)
+        }
+        )
+        .catch(() => {
+          console.log('ok')
+        });
+    }
+
+    fetchApi()
+  }, [])
+
+
+  data = users
+
   const { slice, range } = useTable(data, page, rowsPerPage);
   const [records, setRecords] = useState([]);
+
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
+  if (!users?.length) {
+    return <h1>There are no users to be displayed 🤕</h1>
+  }
 
   const Filter = (event) => {
     setRecords(data.filter(f => f.email.toLowerCase().includes(event.target.value)))
@@ -132,14 +167,50 @@ const TablesInvestments = ({ datas, rowsPerPage }) => {
 }
 
 const TablesMessages = ({ datas, rowsPerPage }) => {
-  let data = datas[2].messages
   const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(true);
+
+  const [packages, setPackages] = useState([]);
+
+
+  let data
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await axios.get("http://localhost:8000/api/messages")
+        .then(res => res)
+        .then(res => {
+          setLoading(false);
+          setPackages(res.data.allmessages)
+        }
+        )
+        .catch(() => {
+          console.log('ok')
+        });
+    }
+
+    fetchApi()
+  }, [])
+
+
+  data = packages
+
   const { slice, range } = useTable(data, page, rowsPerPage);
   const [records, setRecords] = useState([]);
+
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
+  if (!packages?.length) {
+    return <h1>There are no users to be displayed 🤕</h1>
+  }
 
   const Filter = (event) => {
     setRecords(data.filter(f => f.email.toLowerCase().includes(event.target.value)))
   }
+
 
 
   return (
@@ -261,14 +332,50 @@ const TablesPackage = ({ datas, rowsPerPage }) => {
 }
 
 const TablesGateway = ({ datas, rowsPerPage }) => {
-  let data = datas[5].paymentGateway
   const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(true);
+
+  const [users, setUsers] = useState([]);
+
+
+  let data
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await axios.get("http://localhost:8000/api/gateways/")
+        .then(res => res)
+        .then(res => {
+          setLoading(false);
+          setUsers(res.data.allgateways)
+        }
+        )
+        .catch(() => {
+          console.log('ok')
+        });
+    }
+
+    fetchApi()
+  }, [])
+
+
+  data = users
+
   const { slice, range } = useTable(data, page, rowsPerPage);
   const [records, setRecords] = useState([]);
 
-  const Filter = (event) => {
-    setRecords(data.filter(f => f.paymentMethod.toLowerCase().includes(event.target.value)))
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
   }
+
+  if (!users?.length) {
+    return <h1>There are no users to be displayed 🤕</h1>
+  }
+
+  const Filter = (event) => {
+    setRecords(data.filter(f => f.email.toLowerCase().includes(event.target.value)))
+  }
+
 
   return (
     <div className=" overflow-auto w-full">
@@ -304,10 +411,45 @@ const TablesGateway = ({ datas, rowsPerPage }) => {
 }
 
 const TablesAllUsers = ({ datas, rowsPerPage }) => {
-  let data = datas[4].allUsers
   const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(true);
+
+  const [users, setUsers] = useState([]);
+
+
+  let data
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await axios.get("http://localhost:8000/api/users/")
+        .then(res => res)
+        .then(res => {
+          setLoading(false);
+          setUsers(res.data.allusers)
+        }
+        )
+        .catch(() => {
+          console.log('ok')
+        });
+    }
+
+    fetchApi()
+  }, [])
+
+
+  data = users
+
   const { slice, range } = useTable(data, page, rowsPerPage);
   const [records, setRecords] = useState([]);
+
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
+  if (!users?.length) {
+    return <h1>There are no users to be displayed 🤕</h1>
+  }
 
   const Filter = (event) => {
     setRecords(data.filter(f => f.username.toLowerCase().includes(event.target.value)))
@@ -350,15 +492,49 @@ const TablesAllUsers = ({ datas, rowsPerPage }) => {
 }
 
 const TablesdepositOrder = ({ datas, rowsPerPage }) => {
-  let data = datas[7].depositOrder
   const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(true);
+
+  const [users, setUsers] = useState([]);
+
+
+  let data
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await axios.get("http://localhost:8000/api/deposits/")
+        .then(res => res)
+        .then(res => {
+          setLoading(false);
+          setUsers(res.data.alldeposits)
+        }
+        )
+        .catch(() => {
+          console.log('ok')
+        });
+    }
+
+    fetchApi()
+  }, [])
+
+
+  data = users
+
   const { slice, range } = useTable(data, page, rowsPerPage);
   const [records, setRecords] = useState([]);
+
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
+  if (!users?.length) {
+    return <h1>There are no users to be displayed 🤕</h1>
+  }
 
   const Filter = (event) => {
     setRecords(data.filter(f => f.email.toLowerCase().includes(event.target.value)))
   }
-
 
   return (
     <div className=" overflow-auto w-full">
@@ -397,14 +573,50 @@ const TablesdepositOrder = ({ datas, rowsPerPage }) => {
 }
 
 const TableswithdrawalRequest = ({ datas, rowsPerPage }) => {
-  let data = datas[8].withdrawalRequest
   const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(true);
+
+  const [users, setUsers] = useState([]);
+
+
+  let data
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await axios.get("http://localhost:8000/api/Withdrawals/")
+        .then(res => res)
+        .then(res => {
+          setLoading(false);
+          setUsers(res.data.allwithdrawals)
+        }
+        )
+        .catch(() => {
+          console.log('ok')
+        });
+    }
+
+    fetchApi()
+  }, [])
+
+
+  data = users
+
   const { slice, range } = useTable(data, page, rowsPerPage);
   const [records, setRecords] = useState([]);
+
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
+  if (!users?.length) {
+    return <h1>There are no users to be displayed 🤕</h1>
+  }
 
   const Filter = (event) => {
     setRecords(data.filter(f => f.email.toLowerCase().includes(event.target.value)))
   }
+
 
 
   return (

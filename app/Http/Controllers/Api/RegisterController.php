@@ -19,24 +19,31 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
+        
         $validator = Validator::make($request->all(), [
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:12'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'password' => ['required', 'string', 'min:4'],
+            'address' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
         ]);
 
         if ($validator->fails()) {
             return response()->json(['status' => false, 'message' => 'fix errors', 'errors' => $validator->errors()], 500);
         }
 
+        //
         $user = User::create([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
+            'username' => $request->username,
+            'phone' => $request->phone,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' =>  Hash::make($request->password), // password
+            'address' => $request->address,
+            'country' => $request->country,
         ]);
+        
 
-        return response()->json(['status' => true, 'user' => $user]);
+        return response()->json(['status' => 200,'message' => 'You are now registered', 'user' => $user]);
     }
 }

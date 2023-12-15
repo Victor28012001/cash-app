@@ -16,18 +16,19 @@ return new class extends Migration {
             Schema::create('users', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('username');
-                $table->string('refcode');
-                $table->string('refbonus');
+                $table->string('refcode')->default('');
+                $table->string('refbonus')->default('');
                 $table->string('address');
-                $table->string('avatar');
+                $table->string('avatar')->default('');
                 $table->string('phone');
                 $table->string('country');
-                $table->decimal('balance', 8, 2);
+                $table->decimal('balance', 8, 2)->nullable();
                 $table->string('email')->unique();
-                $table->timestamp('regDate');
+                $table->timestamp('regDate')->default(now());
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
                 $table->enum('role', ['user', 'admin'])->default('user');
+                $table->enum('online', ['online', 'offline'])->default('offline');
                 $table->enum('status', ['verified', 'unverified'])->default('unverified');
                 $table->boolean('is_2f_on')->default(true);
                 $table->rememberToken();

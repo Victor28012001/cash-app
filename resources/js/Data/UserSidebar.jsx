@@ -21,7 +21,7 @@ const UserSidebar = [
       {
         icon: <FcDonate size={20} />,
         name: "Deposit",
-        path: "/dashboard/Deposit",
+        path: "/dashboard/WalletDetails",
         active: false,
         alert: false,
       },
@@ -46,13 +46,13 @@ const UserSidebar = [
         active: false,
         alert: false,
       },
-      {
-        icon: <FcPackage size={20} />,
-        name: "Package",
-        path: "/dashboard/Package",
-        active: false,
-        alert: false,
-      },
+      // {
+      //   icon: <FcPackage size={20} />,
+      //   name: "Package",
+      //   path: "/dashboard/Package",
+      //   active: false,
+      //   alert: false,
+      // },
       {
         icon: <FcLock size={20} />,
         name: "Security",
@@ -67,13 +67,13 @@ const UserSidebar = [
         active: false,
         alert: false,
       },
-      {
-        icon: <FcViewDetails size={20} />,
-        name: "Wallet Details",
-        path: "/dashboard/WalletDetails",
-        active: false,
-        alert: false,
-      },
+      // {
+      //   icon: <FcViewDetails size={20} />,
+      //   name: "Wallet Details",
+      //   path: "/dashboard/WalletDetails",
+      //   active: false,
+      //   alert: false,
+      // },
       {
         icon: <FcMoneyTransfer size={20} />,
         name: "Withdrawal",
