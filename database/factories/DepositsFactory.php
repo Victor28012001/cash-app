@@ -19,7 +19,7 @@ class DepositsFactory extends Factory
     {
         return [
             'email' => fake()->unique()->safeEmail(),
-            'mode' => fake()->realText(),
+            'mode' => fake()->word(),
             'amount' => rand(20, 3100),
             'referrerPay' => rand(20, 3100),
             'date' => fake()->dateTimeBetween('-3 years', now()),

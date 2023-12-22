@@ -17,8 +17,8 @@ const InvestmentPackages = () => {
       await axios.get("http://localhost:8000/api/packages/")
         .then(res => res)
         .then(res => {
-          setLoading(false);
           setPackages(res.data.allpackages)
+          console.log(packages)
         }
         )
         .catch(() => {
@@ -38,13 +38,14 @@ const InvestmentPackages = () => {
 
 
 
-  const createProduct = async (e, id) => {
+  const updatePackage = async (e, id) => {
     e.preventDefault();    
 
 
     await axios.get(`http://localhost:8000/api/packages/${id}`).then((res)=>{
       if(res.data.status === 200){
         setPackag(res.data.packages)
+        console.log('ok1')
       }
       else if(res.data.status === 500){
         swal('Error', res.data.message, 'error');
@@ -63,19 +64,14 @@ const InvestmentPackages = () => {
 
 
       await axios.post(`http://localhost:8000/api/investments`, formData).then((res)=>{
-      swal.fire({
-        icon:"success",
-        text:data.message
-      })
+      swal("Success!", res.data.message, "success");
+      console.log(res)
       navigate(`/Package/${id}`)
     }).catch(({response})=>{
       if(response.status===422){
         setValidationError(response.data.errors)
       }else{
-        swal.fire({
-          text:response.data.message,
-          icon:"error"
-        })
+        swal('Error', response.data.message, 'error');
       }
     })
   }
@@ -88,7 +84,7 @@ const InvestmentPackages = () => {
         <div className='flex flex-wrap px-[15px] gap-[20px]'>
         {packages.map((item) => (<div key={item.id} className="cont w-[30%] text-bold m-[20px] flex flex-col items-center justify-around border-0 px-3 py-3 text-blueGray-600 relative bg-white bg-white rounded-[15px] text-sm shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] pl-10">
 
-            <form action="" method="post" onSubmit={updatePackage(e, item.id)} className=" flex flex-col gap-[28px] w-[90%] py-[5px]">
+            <form action="" method="post" onSubmit={(e) => updatePackage(e, item.id)} className=" flex flex-col gap-[28px] w-[90%] py-[5px]">
 
               <h2 className='text-xl leading-6 font-bold text-slate-900'>{item.name}</h2>
 

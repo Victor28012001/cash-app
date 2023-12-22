@@ -20,7 +20,7 @@ class MessagesFactory extends Factory
             //
             'message' => fake()->realText(200, 2),
             'title' => fake()->realText(20, 2),
-            'image' => 'https://placeimg.com/100/100/any?' . rand(1, 100),
+            'image' => fake()->imageUrl(),
             'email' => fake()->unique()->safeEmail(),
             'status' => fake()->randomElement(['sent', 'unsent', 'read', 'pending']),
             'date' => fake()->dateTimeBetween('-3 years', now()),

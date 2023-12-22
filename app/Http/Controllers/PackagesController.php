@@ -51,16 +51,23 @@ class PackagesController extends Controller
 
             'name' => $request->get('name'),
   
-            'description' => $request->get('description'),
+            'increase' => $request->get('increase'),
   
-            'price' => $request->get('price'),
+            'bonus' => $request->get('bonus'),
   
-            'count' => $request->get('count'),
+            'status' => $request->get('status'),
+  
+            'MIN' => $request->get('MIN'),
+  
+            'MAX' => $request->get('MAX'),
+  
+            'duration' => $request->get('duration'),
   
           ]);
   
   
           return response()->json(['status' => true, 'packages' => $packages]);
+
     }
 
     /**

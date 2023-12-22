@@ -17,8 +17,8 @@ return new class extends Migration
             $table->bigIncrements('id');
                 $table->string('firstName');
                 $table->string('lastName');
-                $table->decimal('winRate', 2, 2);
-                $table->decimal('profitShare', 2, 2);
+                $table->decimal('winRate', 4, 2);
+                $table->decimal('profitShare', 4, 2);
                 $table->enum('active', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });

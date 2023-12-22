@@ -24,7 +24,7 @@ class SettingsSeeder extends Seeder
             'siteEmail' => fake()->unique()->safeEmail(),
             'siteUrl' => fake()->url(),
             'phone' =>  fake()->phoneNumber(),
-            'logo' => 'https://placeimg.com/100/100/any?' . rand(1, 100),
+            'logo' => fake()->imageUrl(),
             'regBonus' => rand(20, 3100),
             'refBonus' => rand(20, 3100),
             'withdrawLimit' => rand(1000, 200),

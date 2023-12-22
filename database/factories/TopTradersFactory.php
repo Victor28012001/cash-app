@@ -17,8 +17,8 @@ class TopTradersFactory extends Factory
     public function definition()
     {
         return [
-            'firstName' => fake()->name(),
-            'lastName' => fake()->name(),
+            'firstName' => fake()->firstName(),
+            'lastName' => fake()->lastName(),
             'winRate' => rand(70, 95),
             'profitShare' => rand(10, 20),
             'active' => fake()->randomElement(['active', 'inactive']),

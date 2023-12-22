@@ -19,13 +19,13 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'username' => fake()->name(),
+            'username' => fake()->userName(),
             'phone' => str_replace('+', '', fake()->unique()->e164PhoneNumber()),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' =>  Hash::make('password'), // password
             'remember_token' => Str::random(10),
-            'avatar' => 'https://placeimg.com/100/100/any?' . rand(1, 100),
+            'avatar' => fake()->imageUrl(),
             'address' => fake()->address(),
             'country' => fake()->country(),
             'balance' => rand(20, 3100),

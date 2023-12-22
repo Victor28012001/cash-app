@@ -41,7 +41,7 @@ const UserSidebar = [
       },
       {
         icon: <FcFilingCabinet size={20} />,
-        name: "My Packages",
+        name: "Investments",
         path: "/dashboard/MyPackages",
         active: false,
         alert: false,
@@ -85,6 +85,13 @@ const UserSidebar = [
         icon: <FcBusinessman size={20} />,
         name: "Profile",
         path: "/dashboard/Profile",
+        active: false,
+        alert: false,
+      },
+      {
+        icon: <FcBusinessman size={20} />,
+        name: "Top Traders",
+        path: "/dashboard/TopTraders",
         active: false,
         alert: false,
       },

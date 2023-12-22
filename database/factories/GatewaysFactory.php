@@ -18,8 +18,8 @@ class GatewaysFactory extends Factory
     {
         return [
             'email' => fake()->unique()->safeEmail(),
-            'paymentMethod' => fake()->randomLetter(),
-            'payDetails' => fake()->realText(),
+            'paymentMethod' => fake()->word(),
+            'payDetails' => fake()->realTextBetween(6,12,2),
             'payIcon' => fake()->imageUrl(),
         ];
     }

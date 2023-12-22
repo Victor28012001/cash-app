@@ -10,6 +10,7 @@ import TransactionLogs from '../Components/User/TransactionLogs';
 import WalletDetails from '../Components/User/WalletDetails';
 import Withdrawal from '../Components/User/Withdrawal';
 import Profile from '../Components/User/Profile';
+import TopTraders from '../Components/User/TopTraders';
 
 
 import AddGateway from '../Components/Admin/AddGateway'
@@ -157,6 +158,12 @@ export const routes = createBrowserRouter([
     path: "/dashboard/Withdrawal",
     exact: true,
     element: <Withdrawal />,
+  },
+  {
+    name: "Top Traders",
+    path: "/dashboard/TopTraders",
+    exact: true,
+    element: <TopTraders />,
   },
   {
     name: "Add Gateway",
