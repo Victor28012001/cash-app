@@ -9,7 +9,7 @@ const CopyTradingBlock = () => {
                 <div className="flex justify-between items-center">
                     <h2 className="text-lg font-semibold">Top Traders</h2>
                     <Link
-                        to=""
+                        to="/dashboard/TopTraders"
                         className="text-indigo-700 text-sm rounded inline-flex items-center"
                     >
                         View More

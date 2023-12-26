@@ -13,6 +13,7 @@ use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\GatewaysController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserResourceController;
+use App\Http\Controllers\TopTradersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,7 @@ Route::resource('api/deposits', DepositsController::class);
 Route::resource('api/packages', PackagesController::class);
 
 Route::resource('api/investments', InvestmentsController::class);
+Route::get('api/investments/filterByType/{parameter}', [InvestmentsController::class, 'filterByType']);
 
 Route::resource('api/messages', MessagesController::class);
 
@@ -78,3 +80,5 @@ Route::resource('api/gateways', GatewaysController::class);
 Route::resource('api/settings', SettingsController::class);
 
 Route::resource('api/users', UserResourceController::class);
+
+Route::resource('api/Toptraders', TopTradersController::class);

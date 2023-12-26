@@ -63,7 +63,6 @@ const AddUser = () => {
       })
   }
 
-  console.log(user);
 
 
   const makeUpdate = (e) => {

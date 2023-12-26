@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import useTable from '../../hooks/useTable';
+import UserData from '../../DummyData/User/UserData.json'
 import AdminTablesFooter from './AdminTablesFooter';
 import { TablePackages, TableApproval, TableInvestments, TableMessages, TableUsers, TableGateway, TableAllUsers, TabledepositOrder, TablewithdrawalRequest } from "./AdminTableitems";
 
@@ -732,52 +733,12 @@ const TablesUsers = ({ datas, rowsPerPage }) => {
       <AdminTablesFooter range={range} slice={slice} setPage={setPage} page={page} />
 
     </div>
-  )
+  )}
 
-const Tablessers = ({ datas, rowsPerPage }) => {
-  // const [page, setPage] = useState(1);
-  // const [isLoading, setLoading] = useState(true);
+const Tablessers = () => {
 
-  // const [users, setUsers] = useState([]);
-
-
-  // let data
-
-  // useEffect(() => {
-  //   const fetchApi = async () => {
-  //     await axios.get("http://localhost:8000/api/users/")
-  //       .then(res => res)
-  //       .then(res => {
-  //         setLoading(false);
-  //         setUsers(res.data.allusers)
-  //       }
-  //       )
-  //       .catch(() => {
-  //         console.log('ok')
-  //       });
-  //   }
-
-  //   fetchApi()
-  // }, [])
-
-
-  // data = users
-
-  // const { slice, range } = useTable(data, page, rowsPerPage);
-  // const [records, setRecords] = useState([]);
-
-
-  // if (isLoading) {
-  //   return <h1>Loading...</h1>
-  // }
-
-  // if (!users?.length) {
-  //   return <h1>There are no users to be displayed 🤕</h1>
-  // }
-
-  // const Filter = (event) => {
-  //   setRecords(data.filter(f => f.username.toLowerCase().includes(event.target.value)))
-  // }
+  let datas = UserData
+  let data = datas[0].transactions
 
   const [currentPage, setCurrentPage] = useState(1);
 const [recordsPerPage] = useState(5);
@@ -799,81 +760,9 @@ const currentRecords = data.slice(indexOfFirstRecord,
 
 
 
-  //a pagination component
-
-//   <Pagination
-//     nPages={nPages}
-//     currentPage={currentPage}
-//     setCurrentPage={setCurrentPage}
-// />
-
 //create this array inside the paginate component
 const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
 
-//this is pagination component contents
-{/* <nav>
-
-<ul className='pagination justify-content-center'>
-
-    <li className="page-item">
-
-        <a className="page-link" 
-
-            onClick={prevPage} 
-
-            href='#'>
-
-            
-
-            Previous
-
-        </a>
-
-    </li>
-
-    {pageNumbers.map(pgNumber => (
-
-        <li key={pgNumber} 
-
-            className= {`page-item ${currentPage == pgNumber ? 'active' : ''} `} >
-
-
-
-            <a onClick={() => setCurrentPage(pgNumber)}  
-
-                className='page-link' 
-
-                href='#'>
-
-                
-
-                {pgNumber}
-
-            </a>
-
-        </li>
-
-    ))}
-
-    <li className="page-item">
-
-        <a className="page-link" 
-
-            onClick={nextPage}
-
-            href='#'>
-
-            
-
-            Next
-
-        </a>
-
-    </li>
-
-</ul>
-
-</nav> */}
 
 
 const goToNextPage = () => {
@@ -887,12 +776,17 @@ const goToPrevPage = () => {
       setCurrentPage(currentPage - 1)
 }
 
+const toggleModal = () => {
+  setModal(!modal)
+  console.log(modal)
+}
+
   return (
     <div className=" overflow-auto w-full">
 
       
 
-<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+<div className="relative overflow-x-auto shadow-md sm:rounded-lg h-[60vh]">
 <div class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-white dark:bg-gray-900">
 <div>
             <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
@@ -984,35 +878,69 @@ const goToPrevPage = () => {
         </tbody>
     </table>
     <nav className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-        <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="font-semibold text-gray-900 dark:text-white">1-10</span> of <span className="font-semibold text-gray-900 dark:text-white">1000</span></span>
+        <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="font-semibold text-gray-900 dark:text-white">1-10</span> of <span className="font-semibold text-gray-900 dark:text-white">{data.length}</span></span>
         <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-            <li>
-                <a href="#" className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-            </li>
-            <li>
-                <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-            </li>
-            <li>
-                <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-            </li>
-            <li>
-                <a href="#" aria-current="page" className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-            </li>
-            <li>
-                <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-            </li>
-            <li>
-                <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-            </li>
-            <li>
-        <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-            </li>
+        <li className="page-item">
+
+<a className="page-link flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" 
+
+    onClick={goToPrevPage} 
+
+    href='#'>
+
+    
+
+    Previous
+
+</a>
+
+</li>
+
+{pageNumbers.map(pgNumber => (
+
+<li key={pgNumber} 
+
+    className= {`page-item ${currentPage == pgNumber ? 'active' : ''} `} >
+
+
+
+    <a onClick={() => setCurrentPage(pgNumber)}  
+
+        className='page-link flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' 
+
+        href='#'>
+
+        
+
+        {pgNumber}
+
+    </a>
+
+</li>
+
+))}
+
+<li className="page-item">
+
+<a className="page-link flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" 
+
+    onClick={goToNextPage}
+
+    href='#'>
+
+    
+
+    Next
+
+</a>
+
+</li>
         </ul>
     </nav>
 {/* </div><!-- Edit user modal --> */}
-{modal && (<div onClick={toggleModal} id="editUserModal" tabindex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div className="relative w-full max-w-2xl max-h-full">
-          {setModal(!modal)}
+{modal && (<div onClick={toggleModal} id="editUserModal" className="absolute top-0 left-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div className="relative w-full max-h-full">
+          
             {/* <!-- Modal content --> */}
             <form className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 {/* <!-- Modal header --> */}
@@ -1076,6 +1004,6 @@ const goToPrevPage = () => {
     </div>
   )}
 
-}
 
-export { TablesApproval, TablesInvestments, TablesMessages, TablesPackage, TablesGateway, TablesUsers, TablesAllUsers, TablesdepositOrder, TableswithdrawalRequest }
+
+export { TablesApproval, TablesInvestments, TablesMessages, TablesPackage, TablesGateway, TablesUsers, TablesAllUsers, TablesdepositOrder, TableswithdrawalRequest, Tablessers }

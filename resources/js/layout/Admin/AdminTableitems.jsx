@@ -44,7 +44,6 @@ const TableInvestments = ({ slice, records }) => {
 
         const thisClicked = e.currentTarget;
         thisClicked.innerText = 'Deleting'
-        console.log(id);
 
         axios.delete(`/api/investments/${id}`)
             .then(res => {
@@ -53,7 +52,7 @@ const TableInvestments = ({ slice, records }) => {
                     thisClicked.closest('tr').remove()
                 }
                 else if (res.data.status === 500) {
-                    swal("Success!", res.data.message, "success");
+                    swal("Sorry!", res.data.message, "error");
                     thisClicked.innerText = 'Delete'
                 }
             })

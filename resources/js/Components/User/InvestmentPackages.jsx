@@ -57,13 +57,23 @@ const InvestmentPackages = () => {
       const increase = packag.increase
 
 
-      const formData = new FormData()    
-      formData.append('packageName', packageName)
-      formData.append('invested', invested)
-      formData.append('increase', increase)
+      // const formData = new FormData()    
+      // formData.append('packageName', packageName)
+      // formData.append('invested', invested)
+      // formData.append('increase', increase)
+
+      // console.log(formData)
+
+      const investment = {
+        name: packageName,
+        invested: invested,
+        increase: increase
+      }
+
+      console.log(investment)
 
 
-      await axios.post(`http://localhost:8000/api/investments`, formData).then((res)=>{
+      await axios.post(`http://localhost:8000/api/investments`, investment).then((res)=>{
       swal("Success!", res.data.message, "success");
       console.log(res)
       navigate(`/Package/${id}`)
@@ -84,7 +94,7 @@ const InvestmentPackages = () => {
         <div className='flex flex-wrap px-[15px] gap-[20px]'>
         {packages.map((item) => (<div key={item.id} className="cont w-[30%] text-bold m-[20px] flex flex-col items-center justify-around border-0 px-3 py-3 text-blueGray-600 relative bg-white bg-white rounded-[15px] text-sm shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] pl-10">
 
-            <form action="" method="post" onSubmit={(e) => updatePackage(e, item.id)} className=" flex flex-col gap-[28px] w-[90%] py-[5px]">
+            <form action="" method="post" encType="multipart/form-data" onSubmit={(e) => updatePackage(e, item.id)} className=" flex flex-col gap-[28px] w-[90%] py-[5px]">
 
               <h2 className='text-xl leading-6 font-bold text-slate-900'>{item.name}</h2>
 

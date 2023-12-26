@@ -15,6 +15,8 @@ class TopTradersController extends Controller
     public function index()
     {
         //
+        $TopTraders = TopTraders::all();
+        return response()->json(['status' => 200, 'allTopTraders' => $TopTraders]);
     }
 
     /**

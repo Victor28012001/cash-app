@@ -1,7 +1,96 @@
-import React from "react";
+import {React, useState, useEffect, useRef} from "react";
 import Layout from "../../layout/Admin/Layout";
+import { createPopper } from "@popperjs/core";
+import profile from "../../Assets/team-1-800x800.jpg";
 
 const TopTraders = () => {
+    
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(5);
+
+
+  const [modal, setModal] = useState(false);
+
+
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
+  const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
+  const btnDropdownRef = useRef();
+  const popoverDropdownRef = useRef();
+  const openDropdownPopover = () => {
+      createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
+          placement: "bottom-end"
+      });
+      setDropdownPopoverShow(true);
+  };
+  const closeDropdownPopover = () => {
+      setDropdownPopoverShow(false);
+  };
+
+
+  let data
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await axios.get("http://localhost:8000/api/Toptraders/")
+        .then(res => {
+          setUsers(res.data.allTopTraders)
+        }
+        )
+        .catch(() => {
+          console.log('ok')
+        });
+    }
+
+    fetchApi()
+  }, [])
+
+
+  data = users
+
+
+  const indexOfLastRecord = currentPage * recordsPerPage;
+const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+
+
+// Records to be displayed on the current page
+const currentRecords = data.slice(indexOfFirstRecord, 
+  indexOfLastRecord);
+
+  const indexNow = currentPage - 1
+  const beginNo = (indexNow * recordsPerPage) + 1
+  const endNo = (indexNow * recordsPerPage) + currentRecords.length
+
+
+  const nPages = Math.ceil(data.length / recordsPerPage)
+
+
+
+//create this array inside the paginate component
+const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
+
+
+
+data = currentRecords
+
+
+
+const goToNextPage = () => {
+  if(currentPage !== nPages) 
+      setCurrentPage(currentPage + 1)
+}
+
+
+const goToPrevPage = () => {
+  if(currentPage !== 1) 
+      setCurrentPage(currentPage - 1)
+}
+
+const toggleModal = () => {
+  setModal(!modal)
+}
+
     return (
         <Layout>
             <div className=" bg-[#f0f0f0] py-[15px] h-full overflow-y-hidden">
@@ -11,8 +100,11 @@ const TopTraders = () => {
                             <div className="flex items-center w-[100%] justify-between flex-col md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-white dark:bg-gray-900">
                                 <div>
                                     <button
-                                        id="dropdownActionButton"
-                                        data-dropdown-toggle="dropdownAction"
+                ref={btnDropdownRef}
+                onClick={e => {
+                    e.preventDefault();
+                    dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
+                }}
                                         className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                                         type="button"
                                     >
@@ -39,7 +131,7 @@ const TopTraders = () => {
                                     {/* <!-- Dropdown menu --> */}
                                     <div
                                         id="dropdownAction"
-                                        className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                                        className={(dropdownPopoverShow ? "block " : "hidden ") + "absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"}
                                     >
                                         <ul
                                             className="py-1 text-sm text-gray-700 dark:text-gray-200"
@@ -49,6 +141,7 @@ const TopTraders = () => {
                                                 <a
                                                     href="#"
                                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    onClick={e => e.preventDefault()}
                                                 >
                                                     Reward
                                                 </a>
@@ -57,6 +150,7 @@ const TopTraders = () => {
                                                 <a
                                                     href="#"
                                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    onClick={e => e.preventDefault()}
                                                 >
                                                     Promote
                                                 </a>
@@ -65,6 +159,7 @@ const TopTraders = () => {
                                                 <a
                                                     href="#"
                                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    onClick={e => e.preventDefault()}
                                                 >
                                                     Activate account
                                                 </a>
@@ -128,13 +223,19 @@ const TopTraders = () => {
                                             </div>
                                         </th>
                                         <th scope="col" className="px-6 py-3">
-                                            Name
+                                            Username
                                         </th>
                                         <th scope="col" className="px-6 py-3">
-                                            Position
+                                            All Time Gain
                                         </th>
                                         <th scope="col" className="px-6 py-3">
-                                            Status
+                                            Active
+                                        </th>
+                                        <th scope="col" className="px-6 py-3">
+                                            Copiers
+                                        </th>
+                                        <th scope="col" className="px-6 py-3">
+                                            Commission
                                         </th>
                                         <th scope="col" className="px-6 py-3">
                                             Action
@@ -142,7 +243,9 @@ const TopTraders = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                {data.map((item) => (<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
+                                            onClick={toggleModal}
+                                            >
                                         <td className="w-4 p-4">
                                             <div className="flex items-center">
                                                 <input
@@ -164,12 +267,12 @@ const TopTraders = () => {
                                         >
                                             <img
                                                 className="w-10 h-10 rounded-full"
-                                                src="/docs/images/people/profile-picture-1.jpg"
+                                                src={profile}
                                                 alt="Jese"
                                             />
                                             <div className="ps-3">
                                                 <div className="text-base font-semibold">
-                                                    Neil Sims
+                                                {item.firstName} {item.lastName}
                                                 </div>
                                                 <div className="font-normal text-gray-500">
                                                     neil.sims@flowbite.com
@@ -177,38 +280,37 @@ const TopTraders = () => {
                                             </div>
                                         </th>
                                         <td className="px-6 py-4">
-                                            React Developer
+                                            {item.winRate}
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex items-center">
                                                 <div className="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>{" "}
-                                                Online
+                                                {item.active}
                                             </div>
                                         </td>
                                         <td className="px-6 py-4">
+                                            17
+                                        </td>
+                                        <td className="px-6 py-4">
+                                                {item.profitShare}
+                                        </td>
+                                        <td className="px-6 py-4">
                                             {/* <!-- Modal toggle --> */}
-                                            <a
-                                                href="#"
-                                                type="button"
-                                                data-modal-target="editUserModal"
-                                                data-modal-show="editUserModal"
+                                            <button
                                                 className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                             >
                                                 Edit user
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    
-                                </tbody>
-                            </table>
-                            {/* <!-- Edit user modal --> */}
-                            <div
+                                            </button>
+                                        </td>  
+                                        {/* <!-- Edit user modal --> */}
+                            {modal && (<div
                                 id="editUserModal"
                                 tabindex="-1"
                                 aria-hidden="true"
-                                className="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                                className="fixed top-0 left-0 z-50 items-center justify-center w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
                             >
-                                <div className="relative w-full max-w-2xl max-h-full">
+                                {console.log(item.firstName)}
+                                <div className="relative w-full max-h-full">
                                     {/* <!-- Modal content --> */}
                                     <form className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                         {/* <!-- Modal header --> */}
@@ -220,6 +322,7 @@ const TopTraders = () => {
                                                 type="button"
                                                 className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                                 data-modal-hide="editUserModal"
+                                                onClick={toggleModal}
                                             >
                                                 <svg
                                                     className="w-3 h-3"
@@ -256,7 +359,7 @@ const TopTraders = () => {
                                                         name="first-name"
                                                         id="first-name"
                                                         className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                        placeholder="Bonnie"
+                                                        placeholder={item.firstName}
                                                         required=""
                                                     />
                                                 </div>
@@ -272,7 +375,7 @@ const TopTraders = () => {
                                                         name="last-name"
                                                         id="last-name"
                                                         className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                        placeholder="Green"
+                                                        placeholder={item.lastName}
                                                         required=""
                                                     />
                                                 </div>
@@ -385,7 +488,75 @@ const TopTraders = () => {
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div>)}
+                                    </tr>
+
+                                    
+                                ))}
+                                    
+                                </tbody>
+                            </table>
+    <nav className="flex items-center w-full flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+        <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="font-semibold text-gray-900 dark:text-white">{beginNo}-{endNo}</span> of <span className="font-semibold text-gray-900 dark:text-white">{users.length}</span></span>
+        <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+        <li className="page-item">
+
+<a className="page-link flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" 
+
+    onClick={goToPrevPage} 
+
+    href='#'>
+
+    
+
+    Previous
+
+</a>
+
+</li>
+
+{pageNumbers.map(pgNumber => (
+
+<li key={pgNumber} 
+
+    className= {`page-item ${currentPage == pgNumber ? 'active' : ''} `} >
+
+
+
+    <a onClick={() => setCurrentPage(pgNumber)}  
+
+        className='page-link flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white' 
+
+        href='#'>
+
+        
+
+        {pgNumber}
+
+    </a>
+
+</li>
+
+))}
+
+<li className="page-item">
+
+<a className="page-link flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" 
+
+    onClick={goToNextPage}
+
+    href='#'>
+
+    
+
+    Next
+
+</a>
+
+</li>
+        </ul>
+    </nav>
+                          
                         {/* </div>
                     </div> */}
                 </div>

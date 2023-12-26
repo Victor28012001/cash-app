@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Investments extends Model
 {
     use HasFactory;
-        
+
     protected $fillable = [
 
         'packageName',
@@ -16,6 +16,6 @@ class Investments extends Model
         'increase',
         'status',
         'ROI',
-     ];
+    ];
 
 }

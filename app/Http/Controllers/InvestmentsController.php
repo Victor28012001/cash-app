@@ -151,4 +151,17 @@ class InvestmentsController extends Controller
         // redirect
         return response()->json(['status' => false, 'message' => 'Successfully updated investments!', 'investments' => $investments], 404);}
     }
+
+
+    public function filterByType($parameter)
+  {
+    $investments = \App\Models\Investments::query();
+    if($investments){
+        $investments = $investments->where('status', '=', $parameter)->get();
+    }
+    return response()->json(['status' => 200, 'investments' => $investments]);
+    }
+
+    
 }
+
