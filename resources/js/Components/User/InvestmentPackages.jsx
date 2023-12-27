@@ -29,6 +29,8 @@ const InvestmentPackages = () => {
     fetchApi()
   }, [])
 
+  console.log(packages)
+
 
   
   const handleInput = (e) => {

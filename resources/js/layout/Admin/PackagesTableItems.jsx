@@ -3,9 +3,13 @@ import styles from "./PackagesTable.module.css";
 
 
 const PackagesTableItems = (data) => {
+
+    console.log(data)
+    const datas = data.data
   return (
     <>
-      {data.map((item) => (<tr
+      {datas.map((item) => (
+      <tr
                                 className={` ${styles.OpenPosition_row__yyS77} ${styles.OpenPosition_selected__f4Y6x} `}
                                 data-testid="opened-position-row"
                             >
@@ -75,7 +79,8 @@ const PackagesTableItems = (data) => {
                                         <span>42966.16</span>
                                     </div>
                                 </td>
-                            </tr>))}
+                            </tr>
+                            ))}
     </>
   )
 }

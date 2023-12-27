@@ -51,11 +51,11 @@ const TopTraders = () => {
 
 
   const indexOfLastRecord = currentPage * recordsPerPage;
-const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 
 
 // Records to be displayed on the current page
-const currentRecords = data.slice(indexOfFirstRecord, 
+  const currentRecords = data.slice(indexOfFirstRecord, 
   indexOfLastRecord);
 
   const indexNow = currentPage - 1
@@ -68,7 +68,7 @@ const currentRecords = data.slice(indexOfFirstRecord,
 
 
 //create this array inside the paginate component
-const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
+  const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
 
 
 
