@@ -17,8 +17,8 @@ const PackagesTable = () => {
                         `http://localhost:8000/api/investments/filterByType/${status}`
                     )
                     .then((res) => {
-                        setLoading(false);
                         setUsers(res.data.investments);
+                        setLoading(false);
                     })
                     .catch(() => {});
             };
@@ -28,15 +28,13 @@ const PackagesTable = () => {
 
         data = users;
 
-        return <PackagesTableItems data={data} />;
-    };
-
+        
     if (loading) {
         return (
-            <div role="status">
+            <div className="absolute left-[50%] top-[50%]">
                 <svg
                     aria-hidden="true"
-                    class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                    class="w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                     viewBox="0 0 100 101"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -54,8 +52,12 @@ const PackagesTable = () => {
             </div>
         );
     }
+    else{return <PackagesTableItems data={data} />;}
 
-    console.log(loading);
+    };
+
+
+    console.log(status);
 
     return (
         <div>
@@ -150,11 +152,11 @@ const PackagesTable = () => {
                                 </td>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="h-full">
                             {/* {loading ? <h4>Loading....</h4> : <PackagesTableItems data={data}/>} */}
-                            {loading && (
+                            {
                                 getBackgroundColor(status)
-                            )}
+                            }
                         </tbody>
                     </table>
                 </div>

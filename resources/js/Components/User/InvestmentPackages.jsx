@@ -7,6 +7,7 @@ import swal from 'sweetalert';
 const InvestmentPackages = () => {
   const navigate = useNavigate();  
   const { id } = useParams()  
+  const [loading, setLoading] = useState(true);
   const [packages, setPackages] = useState([])
   const [packag, setPackag] = useState({})
   const [validationError,setValidationError] = useState({})  
@@ -29,7 +30,6 @@ const InvestmentPackages = () => {
     fetchApi()
   }, [])
 
-  console.log(packages)
 
 
   
@@ -67,7 +67,8 @@ const InvestmentPackages = () => {
       // console.log(formData)
 
       const investment = {
-        name: packageName,
+        username: packageName,
+        packageName: packageName,
         invested: invested,
         increase: increase
       }
@@ -78,7 +79,7 @@ const InvestmentPackages = () => {
       await axios.post(`http://localhost:8000/api/investments`, investment).then((res)=>{
       swal("Success!", res.data.message, "success");
       console.log(res)
-      navigate(`/Package/${id}`)
+      // navigate(`/Package/${id}`)
     }).catch(({response})=>{
       if(response.status===422){
         setValidationError(response.data.errors)

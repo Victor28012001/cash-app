@@ -88,13 +88,13 @@ const UserSidebar = [
         active: false,
         alert: false,
       },
-      {
-        icon: <FcBusinessman size={20} />,
-        name: "Top Traders",
-        path: "/dashboard/TopTraders",
-        active: false,
-        alert: false,
-      },
+      // {
+      //   icon: <FcBusinessman size={20} />,
+      //   name: "Top Traders",
+      //   path: "/dashboard/TopTraders",
+      //   active: false,
+      //   alert: false,
+      // },
 ]
 
 export default UserSidebar

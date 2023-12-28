@@ -38,6 +38,17 @@ class TopTradersController extends Controller
     public function store(Request $request)
     {
         //
+
+        //
+        $topTraders = TopTraders::create([
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName,
+            'winRate' => $request->winRate,
+            'increase' => $request->profitShare, 
+            'active' => $request->active
+        ]);
+
+        return response()->json(['status' => 200,'message' => 'new top Trader created', 'topTraders' => $topTraders]);
     }
 
     /**
@@ -84,4 +95,13 @@ class TopTradersController extends Controller
     {
         //
     }
+
+    
+    public function getFiveTopTraders()
+    {
+        //
+        TopTraders::where('active', '==', 'active')->take(3);
+    }
+
+    
 }

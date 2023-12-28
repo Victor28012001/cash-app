@@ -1,10 +1,12 @@
-import React from 'react'
+import { React, useState } from 'react'
 import styles from "./PackagesTable.module.css";
 
 
 const PackagesTableItems = (data) => {
 
-    console.log(data)
+    const [selected, setSelected] = useState(false)
+
+    // console.log(data)
     const datas = data.data
   return (
     <>
@@ -12,6 +14,7 @@ const PackagesTableItems = (data) => {
       <tr
                                 className={` ${styles.OpenPosition_row__yyS77} ${styles.OpenPosition_selected__f4Y6x} `}
                                 data-testid="opened-position-row"
+                                onClick={()=> setSelected(true)}
                             >
                                 <td
                                     className={` ${styles.common_col__MZ_tC} ${styles.common_symbol__KU1B8} ${styles.OpenPosition_col__aWKNU} ${styles.OpenPosition_symbol__Gk_oA}`}

@@ -2,6 +2,7 @@ import {React, useState, useEffect, useRef} from "react";
 import Layout from "../../layout/Admin/Layout";
 import { createPopper } from "@popperjs/core";
 import profile from "../../Assets/team-1-800x800.jpg";
+import styles from "../../layout/Admin/PackagesTable.module.css";
 
 const TopTraders = () => {
     
@@ -207,7 +208,7 @@ const toggleModal = () => {
                             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th scope="col" className="p-4">
+                                        {/* <th scope="col" className="p-4">
                                             <div className="flex items-center">
                                                 <input
                                                     id="checkbox-all-search"
@@ -221,7 +222,7 @@ const toggleModal = () => {
                                                     checkbox
                                                 </label>
                                             </div>
-                                        </th>
+                                        </th> */}
                                         <th scope="col" className="px-6 py-3">
                                             Username
                                         </th>
@@ -238,7 +239,7 @@ const toggleModal = () => {
                                             Commission
                                         </th>
                                         <th scope="col" className="px-6 py-3">
-                                            Action
+                                        profit and loss
                                         </th>
                                     </tr>
                                 </thead>
@@ -246,7 +247,7 @@ const toggleModal = () => {
                                 {data.map((item) => (<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
                                             onClick={toggleModal}
                                             >
-                                        <td className="w-4 p-4">
+                                        {/* <td className="w-4 p-4">
                                             <div className="flex items-center">
                                                 <input
                                                     id="checkbox-table-search-1"
@@ -260,7 +261,7 @@ const toggleModal = () => {
                                                     checkbox
                                                 </label>
                                             </div>
-                                        </td>
+                                        </td> */}
                                         <th
                                             scope="row"
                                             className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
@@ -296,11 +297,33 @@ const toggleModal = () => {
                                         </td>
                                         <td className="px-6 py-4">
                                             {/* <!-- Modal toggle --> */}
-                                            <button
+                                            {/* <button
                                                 className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                             >
                                                 Edit user
-                                            </button>
+                                            </button> */}
+                                            <div
+                                        className={` ${styles.OpenPosition_wrapper__gBm1R} flex items-center`}
+                                    >
+                                        <span>43048.61</span>
+                                        <span
+                                            className={` ${styles.OpenPosition_arrow__sPRvh}`}
+                                        >
+                                            <svg
+                                                width="8"
+                                                height="8"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M1 4h6M4 1l3 3-3 3"
+                                                    stroke="#848B9D"
+                                                    stroke-linecap="round"
+                                                ></path>
+                                            </svg>
+                                        </span>
+                                        <span>42.16</span>
+                                    </div>
                                         </td>  
                                         {/* <!-- Edit user modal --> */}
                             {modal && (<div

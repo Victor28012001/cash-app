@@ -25,6 +25,7 @@ class InvestmentsFactory extends Factory
             'status' => fake()->randomElement(['approved', 'pending', 'unapproved']),
             'ROI' => rand(20, 3100),
             'investId' => Str::random(10),
+            'duration' => rand(10, 30),
         ];
     }
 }

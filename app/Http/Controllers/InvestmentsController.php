@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class InvestmentsController extends Controller
 {
@@ -47,20 +48,28 @@ class InvestmentsController extends Controller
     public function store(Request $request)
     {
         //
+        $invested = $request->invested;
+        $increase = $request->increase;
+        $duration = $request->duration;
+
+        $increased = $increase * $duration;
+
+        $ROI = ($increased / $invested) * 100;
+
+        //
         $investments = \App\Models\Investments::create([
-
-            'name' => $request->get('name'),
-
-            'description' => $request->get('description'),
-
-            'price' => $request->get('price'),
-
-            'count' => $request->get('count'),
-
+            'username' => $request->username,
+            'packageName' => $request->packageName,
+            'invested' => $request->invested,
+            'increase' => $request->increase, 
+            'status' => 'unapproved',
+            'investId' => Str::random(30),
+            'duration' => $request->get('duration'),
+            'ROI' => $ROI
         ]);
+        
 
-
-        return response()->json(['status' => true, 'investment' => $investments]);
+        return response()->json(['status' => 200,'message' => 'new investment created', 'investments' => $investments]);
     }
 
     /**
